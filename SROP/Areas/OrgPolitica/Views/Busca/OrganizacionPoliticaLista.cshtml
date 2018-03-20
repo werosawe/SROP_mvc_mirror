@@ -1,0 +1,38 @@
+﻿@model IEnumerable<BE_BusquedaOP>
+
+@if (Model.Count() > 0)
+{
+<table id="tblOrganizacionPolitica" class="table table-bordered mb-0">
+    <thead class="thead-default" >
+        <tr>
+            <th>Codigo</th>
+            <th>Denominación</th>
+            <th>Tipo</th>
+            <th>Ubigeo</th>
+            <th>Etapa</th>
+            <th>Fecha</th>
+            <th>Req.</th>
+            <th></th>
+            @*@Glo.ColumnaTablaOrdena("Organización Política", "DESOP", "ASC", 3)*@
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (BE_BusquedaOP item in Model)
+    {
+            <tr>
+                <td>@item.Cod_OP.CerosIzquierda(5)</td>
+                <td><a href='@Url.Action("OrganizacionPolitica", "Inscripcion", new { area=  "OrgPolitica" , Cod_OP = @item.Cod_OP, TABEXPEDIENTE = (int)enumTabExpediente.Expediente, ESTADOPAGINA = enumEstadoPagina.Edicion })' >@item.Des_OP</a></td>
+                <td>@item.Des_Tipo_OP</td>
+                <td>@item.Ubigeo_Concat</td>
+                <td>@item.Des_Estado_Inscrip</td>
+                <td>@item.Fec_Estado_Insc.Text("dd/MM/yyyy")</td>
+                <td>
+                    <button type="button" data-codigo='{"Cod_OP":@item.Cod_OP}' class="btn btn-icon btn-pure success" title='Requisitos' ><i class='icon-book'></i></button>
+                </td>
+                <td><button type="button" data-codigo='{"Cod_OP":@item.Cod_OP, "FLCANDADO":@item.FLCANDADO}' class="btn btn-icon btn-pure danger" title='@((int) item.FLCANDADO == 1 ? "¿Desbloquear?" : "¿Bloquear?")' data-toggle="bloqueo" ifta-placement="top"><i class='@((int) item.FLCANDADO == 1 ? "icon-lock" : "icon-unlock")'></i></button></td>
+            </tr>
+    }
+    </tbody>
+</table>
+}
+@Glo.Paginador()

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="XMLDetalleAfil" targetNamespace="http://tempuri.org/XMLDetalleAfil.xsd" elementFormDefault="qualified"
+	xmlns="http://tempuri.org/XMLDetalleAfil.xsd" xmlns:mstns="http://tempuri.org/XMLDetalleAfil.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="DetalleAfil">
+		<xs:complexType>
+			<xs:sequence>
+			    <xs:element name="Cod_OP" type="xs:string" />
+				<xs:element name="Nombre_OP" type="xs:string" />
+				<xs:element name="Tipo_OP" type="xs:string" />
+				<xs:element name="Estado_Insc" type="xs:string" />
+				<xs:element name="Fec_Solic_Insc" type="xs:string" />
+				<xs:element name="Fec_Estado_Insc" type="xs:string" />
+				<xs:element name="IsAfiliado" type="xs:integer" />				
+				<xs:element name="Ubigeo_OP" type="xs:string" />				
+				<xs:element name="Cod_DNI" type="xs:string" />
+				<xs:element name="NombreCompleto" type="xs:string" />
+				<xs:element name="flg_estado_afil" type="xs:string" />
+				<xs:element name="Estado_Afil" type="xs:string" />
+				<xs:element name="Fec_Renuncia" type="xs:string" />
+				<xs:element name="flg_Padron_Afil" type="xs:string" />
+				<xs:element name="Fec_Padron_Afil" type="xs:string" />
+				<xs:element name="Nro_Entrega_Padron" type="xs:string" />
+				<xs:element name="Comite_name" type="xs:string" />
+				<xs:element name="Fec_Comite" type="xs:string" />
+				<xs:element name="flg_valid_comite" type="xs:string" />
+				<xs:element name="flg_Representante" type="xs:string" />
+				<xs:element name="Fec_Repres" type="xs:string" />
+				<xs:element name="IsCandidato_Elecc" type="xs:string" />				
+				<xs:element name="Observ" type="xs:string" />
+				<xs:element name="texto" type="xs:string" />
+				<xs:element name="fec_renun_op" type="xs:string" />
+				<xs:element name="des_ente_renuncia" type="xs:string" />
+                <xs:element name="fecini_afil" type="xs:string" />
+                <xs:element name="fecfin_afil" type="xs:string" />
+                <xs:element name="Prefijo_PeriodoAfil" type="xs:string" />
+                <xs:element name="CodExpMTD" type="xs:string" />
+                <xs:element name="CodDocMTD" type="xs:string" />
+                <xs:element name="Periodos_Afil_Anteriores" type="xs:string" />
+                <xs:element name="Fue_Afiliado_OtraOP" type="xs:string" />                
+            </xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="XMLop_x_insc_pend_final" targetNamespace="http://tempuri.org/XMLop_x_insc_pend_final.xsd"
+	elementFormDefault="qualified" xmlns="http://tempuri.org/XMLop_x_insc_pend_final.xsd" xmlns:mstns="http://tempuri.org/XMLop_x_insc_pend_final.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="op_x_insc_pend_final">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="des_tipo_op" type="xs:string" />
+                <xs:element name="cod_tipo_op" type="xs:string" />                
+				<xs:element name="can_inscrito" type="xs:integer" />
+				<xs:element name="can_enproceso" type="xs:integer" />
+				<xs:element name="can_finalizados" type="xs:integer" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="op_insc_pend_detalle">
+		<xs:complexType>
+			<xs:sequence>
+			    <xs:element name="cod" type="xs:integer" />
+			    <xs:element name="tipo_proceso" type="xs:string" />
+				<xs:element name="cod_tipo_op" type="xs:string" />
+				<xs:element name="cod_op" type="xs:integer" />
+				<xs:element name="des_op" type="xs:string" />
+				<xs:element name="des_tipo_op" type="xs:string" />
+                <xs:element name="cod_ambito" type="xs:string" />
+                <xs:element name="des_ambito" type="xs:string" />
+				<xs:element name="region" type="xs:string" />
+				<xs:element name="provincia" type="xs:string" />
+				<xs:element name="distrito" type="xs:string" />
+                <xs:element name="userid" type="xs:string" />
+            </xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

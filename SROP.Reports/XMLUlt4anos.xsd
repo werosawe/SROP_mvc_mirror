@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="XMLUlt4anos" targetNamespace="http://tempuri.org/XMLUlt4anos.xsd" elementFormDefault="qualified"
+	xmlns="http://tempuri.org/XMLUlt4anos.xsd" xmlns:mstns="http://tempuri.org/XMLUlt4anos.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Ult4anos">
+        <xs:complexType>
+            <xs:sequence>                
+                <xs:element name="DNI" type="xs:string" />
+                <xs:element name="APPAT" type="xs:string" />
+                <xs:element name="APMAT" type="xs:string" />
+                <xs:element name="NOMBRES" type="xs:string" />
+                <xs:element name="AFIL_ACTUAL" type="xs:string" />
+                <xs:element name="AFIL_4_ANIOS" type="xs:string" />
+                <xs:element name="OP" type="xs:string" />
+                <xs:element name="TIPO" type="xs:string" />
+                <xs:element name="ESTADO" type="xs:string" />
+                <xs:element name="MOTIVO" type="xs:string" />
+                <xs:element name="OBSERV" type="xs:string" />                
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

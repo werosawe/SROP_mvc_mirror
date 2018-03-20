@@ -1,0 +1,40 @@
+﻿@model IEnumerable<BE_Partida>
+@{ 
+    int rowIndex = 0;
+}    
+@if (Model.Count() > 0)
+{
+    <table id="tblPartida" class="table table-bordered mb-0">
+        <thead class="thead-default">
+            <tr>
+                <th>Eliminar</th>
+                <th>N°</th>
+                <th>Solicitud de modificación</th>
+                <th>Abogado</th>
+                <th>Fecha asignación</th>
+                <th>Observaciones</th>
+                <th>Exp. MTD</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (BE_Partida item in Model)
+            {
+                rowIndex = rowIndex + 1;
+                <tr>
+                    <td>
+                        <button type="button" data-codigo='{"Id_Correl": @item.Id_Correl, "Cod_OP": @item.Cod_OP}' title='¿Eliminar?'  class="btn btn-icon btn-pure danger" data-toggle="elimina-partida" data-placement="top">
+                            <i class="icon-android-delete"></i>
+                        </button>
+                    </td>
+                    <td>@item.Id_Correl_Show.CerosIzquierda(3)</td>
+                    <td><a class="edita-partida" data-toggle="modal" data-target="#WinComun" href="#" data-codigo='{"Id_Correl": @item.Id_Correl, "Cod_OP": @item.Cod_OP, "ESTADOPAGINA": "@enumEstadoPagina.Edicion"}' >@item.Des_Tarea</a></td>
+                    <td>@item.Abogado</td>
+                    <td>@item.Fec_Asig.Text("dd/MM/yyyy")</td>
+                    <td>@item.Observaciones</td>
+                    <td>@item.Cod_Exp_Mtd</td>                    
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@Glo.Paginador()

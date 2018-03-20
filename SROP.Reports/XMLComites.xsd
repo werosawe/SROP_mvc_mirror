@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="XMLComites" targetNamespace="http://tempuri.org/XMLComites.xsd" elementFormDefault="qualified"
+	xmlns="http://tempuri.org/XMLComites.xsd" xmlns:mstns="http://tempuri.org/XMLComites.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Comites">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="COD_OP" type="xs:integer" />
+				<xs:element name="DES_OP" type="xs:string" />
+				<xs:element name="DES_ESTADO_INSCRIP" type="xs:string" />
+				<xs:element name="NUM_AFIL_VAL" type="xs:integer" />
+				<xs:element name="NUM_AFIL_TOTAL" type="xs:integer" />
+				<xs:element name="FEC_CARGA" type="xs:date" />
+				<xs:element name="REGION" type="xs:string" />
+				<xs:element name="PROVINCIA" type="xs:string" />
+				<xs:element name="DISTRITO" type="xs:string" />
+				<xs:element name="OBSERV" type="xs:string" />
+				<xs:element name="NRO_ENTREGA" type="xs:integer" />
+				<xs:element name="DIR_COMITE" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Comites_Afil">
+		<xs:complexType>
+			<xs:sequence>				
+				<xs:element name="COD_OP" type="xs:integer" />
+				<xs:element name="des_OP" type="xs:string" />
+				<xs:element name="des_estado_inscrip" type="xs:string" />
+				<xs:element name="region" type="xs:string" />
+				<xs:element name="provincia" type="xs:string" />
+				<xs:element name="distrito" type="xs:string" />
+				<xs:element name="cod_dni" type="xs:string" />
+				<xs:element name="nombres" type="xs:string" />
+				<xs:element name="appat" type="xs:string" />
+				<xs:element name="apmat" type="xs:string" />
+				<xs:element name="cod_sexo" type="xs:string" />
+				<xs:element name="FLGVALIDO" type="xs:integer" />
+				<xs:element name="motivo" type="xs:string" />
+				<xs:element name="NROENTREGA" type="xs:integer" />
+				<xs:element name="cod_mot_op" type="xs:string" />
+				<xs:element name="des_mot_op" type="xs:string" />
+				<xs:element name="cod_resultado_vf" type="xs:string" />
+				<xs:element name="fec_carga" type="xs:string" />
+				<xs:element name="des_estado_ciudadano" type="xs:string" />
+                <xs:element name="des_motivo_inval" type="xs:string" />
+                <xs:element name="tx_obs_reniec" type="xs:string" />
+                <xs:element name="DJ" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+    <xs:element name="Comites_Revisa_VF">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="COD_OP" type="xs:integer" />
+                <xs:element name="des_OP" type="xs:string" />
+                <xs:element name="des_tipo_op" type="xs:string" />
+                <xs:element name="region" type="xs:string" />
+                <xs:element name="provincia" type="xs:string" />
+                <xs:element name="distrito" type="xs:string" />                
+                <xs:element name="nro_entrega" type="xs:integer" />
+                <xs:element name="conta" type="xs:integer" />
+                <xs:element name="cod_motivo" type="xs:string" />
+                <xs:element name="des_motivo" type="xs:string" />
+                <xs:element name="cod_resultado_vf" type="xs:string" />
+                <xs:element name="num_afil_val" type="xs:integer" />
+                <xs:element name="num_afil_total" type="xs:integer" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

@@ -1,0 +1,226 @@
+﻿@model BE_Etapa
+     @*method='post' action='@Url.Action("Graba", "api/EtapaApi", new { area = "OrgPolitica" })'*@
+<form class="form" id="frmEtapa" >
+    <div class="form-body">
+        <h5 class="form-section">Expediente MTD</h5>
+        @{  
+            string claseRowMTD = "form-group has-danger row"; string claseBtnMTD = "btn btn-danger";
+            if (Model != null)
+            {
+                if (Model.MTDEXPNUEXPEDIENTE > 0 || Model.MTDCODDOCUMENTO.NoNulo()) { claseRowMTD = "form-group has-success row"; claseBtnMTD = "btn btn-success"; }
+            }
+        }
+        <div id="row1" class='@claseRowMTD'>
+            <div class="col-md-3">
+                @Html.selectMTDExpedientePrefijo(x => x.MTDEXPTXPREFIJO, new { @class = "form-control"}, null)
+            </div>
+            <div class="col-md-3">
+                @Html.selectMTDExpedienteAnno(x => x.MTDEXPNUANNO , new { @class = "form-control" }, null)
+            </div>
+            <div class="col-md-3">
+                @Html.number(x => x.MTDEXPNUEXPEDIENTE, new { @class = "form-control" })
+            </div>
+            <div class="col-md-3">
+                <button type="button" id="btnBuscaDocumentoMTD" class='@claseBtnMTD'>
+                    <i class="icon-search"></i> Buscar
+                </button>
+            </div>
+        </div>
+        <div id="row2" class='@claseRowMTD'>
+            <label class="col-md-3 label-control" for="MTDCODDOCUMENTO">Documento</label>
+            <div class="col-md-9"> 
+                @Html.selectMTDDocumentosExpediente(x => x.MTDCODDOCUMENTO, new { @class = "form-control" }, new { CODEXPEDIENTE = Model != null ? Model.MTDCODEXPEDIENTE : null })
+            </div>
+        </div>
+        <div class='form-group row'>
+            <label class="col-md-3 label-control" for="MTDDESASUNTO">Asunto</label>
+            <div class="col-md-9">
+                @Html.p(x => x.MTDDESASUNTO, new { @class = "form-control-static" })
+            </div>
+        </div>
+        <div class='form-group row'>
+            <label class="col-md-3 label-control" for="Fec_Estado_Insc">Fecha y hora</label>
+            <div class="col-md-9">
+               @Html.date(x => x.Fec_Estado_Insc, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3 label-control font-weight-bold" for="Cod_Ente">Ente</label>
+            <div class="col-md-9">
+                @Html.selectEnte(x => x.Cod_Ente, new { @class = "form-control" })
+            </div>
+        </div>
+        <h5 class="form-section">Datos</h5>
+        <div class="form-group row">
+            <label class="col-md-3 label-control" for="Cod_Tipo_Etapa">Movimiento</label>
+            <div class="col-md-9">
+                @if (Model.Cod_Correlativo == 1)
+                {
+                    @Html.selectTipoMovimientoEtapa(x => x.Cod_Tipo_Etapa, new { @class = "form-control", disabled = "disabled" }, true)
+                }
+                else
+                {
+                    @Html.selectTipoMovimientoEtapa(x => x.Cod_Tipo_Etapa, new { @class = "form-control" }, true)
+                }
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3 label-control" for="Cod_Est_Insc">Etapa</label>
+            <div class="col-md-9"> 
+                @Html.selectTipoEtapa(x => x.Cod_Est_Insc, new { @class = "form-control" }, new { CODTIPOMOV = Model != null ? Model.Cod_Tipo_Etapa : null }, true)
+            </div>
+        </div>
+        @{string claseRowEstado = "form-group row display-hidden";
+            if (Model != null)
+            {
+                if (Model.Cod_Est_Insc == CO_Constante.CO_ESTADO_INCRIPCION_OP_CANCELADO) { claseRowEstado = "form-group row"; }
+            }
+        }
+        <div id="rowMotivo" class='@claseRowEstado'>
+            <label class="col-md-3 label-control" for="Cod_Tipo_Cancel">Motivo</label>
+            <div class="col-md-9">
+                @Html.selectMotivoCancelaInscripcionEtapa(x => x.Cod_Tipo_Cancel, new { @class = "form-control" },null,  true)
+            </div>
+        </div>
+        <div id="rowResolucion" class='@claseRowEstado'>
+            <label class="col-md-3 label-control" for="Des_Num_Resol">N° Resolución</label>
+            <div class="col-md-9">
+                @Html.text(x => x.Des_Num_Resol, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3 label-control font-weight-bold" for="Des_Observ">Observaciones</label>
+            <div class="col-md-9">
+                @Html.textarea(x => x.Des_Observ, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    @Html.hidden(x=>x.Cod_Correlativo)
+    @Html.hidden(x => x.ESTADOPAGINA)
+    <div class="form-actions right">
+        <button type="button"  class="btn btn-warning" data-dismiss="modal">
+            <i class="icon-cross2"></i> Cancelar
+        </button>
+        <button type="button" id="btnGrabaEtapa" class="btn btn-primary">
+            <i class="icon-check2"></i> Grabar
+        </button>
+    </div>
+</form>
+<script type="text/javascript">
+
+
+
+    $(function () {
+
+        $("#btnBuscaDocumentoMTD").bind("click", function () {
+            $("#MTDCODDOCUMENTO").empty();
+            $("#MTDCODDOCUMENTO").append("<option disabled='disabled' selected='selected' value='' >@CO_Constante.menSeleccionHtmlSelect</option>");
+            $.ajax({
+                url: '@Url.Action("GetsDocumentos", "api/MTDApi", new { area=  DBNull.Value })',
+                type: "GET",
+                data: { "TXPREFIJO": $("#MTDEXPTXPREFIJO").val(), "NUANNO": $("#MTDEXPNUANNO").val(), "NUEXPEDIENTE": $("#MTDEXPNUEXPEDIENTE").val() },
+                contentType: "application/json;chartset=utf-8",
+                success: function (result) {
+                    if (result.total > 0) {
+                        $.each(result.data, function (i, item) {
+                            $("#MTDCODDOCUMENTO").append("<option value=" + item.CODDOCUMENTO + ">" + item.CODDOCUMENTO + "</option>");
+                        });
+                        $('#btnBuscaDocumentoMTD').removeClass("btn-danger"); $('#btnBuscaDocumentoMTD').addClass("btn-success");
+                        $('#row1').removeClass("has-danger"); $('#row1').addClass("has-success");
+                        $('#row2').removeClass("has-danger"); $('#row2').addClass("has-success");
+                    } else {
+                        $('#btnBuscaDocumentoMTD').removeClass("btn-success"); $('#btnBuscaDocumentoMTD').addClass("btn-danger");
+                        $('#row1').removeClass("has-success"); $('#row1').addClass("has-danger");
+                        $('#row2').removeClass("has-success"); $('#row2').addClass("has-danger");
+                    }
+                },
+            });
+
+            $("#MTDDESASUNTO").html(null);
+            $("#Fec_Estado_Insc").val(null);
+        });
+
+        $("#MTDCODDOCUMENTO").bind("change", function () {
+            $("#MTDDESASUNTO").empty();
+            $.ajax({
+                url: '@Url.Action("GetDocumento", "api/MTDApi", new { area=  DBNull.Value })',
+                type: "GET",
+                data: { "TXPREFIJO": $("#MTDEXPTXPREFIJO").val(), "NUANNO": $("#MTDEXPNUANNO").val(), "NUEXPEDIENTE": $("#MTDEXPNUEXPEDIENTE").val(), "CODDOCUMENTO": $("#MTDCODDOCUMENTO").val() },
+                contentType: "application/json;chartset=utf-8",
+                success: function (result) {
+                    var i = result.data;
+                    if (i != null) {
+                        $("#MTDDESASUNTO").html(trim(i.DESASUNTO));
+                        $("#Fec_Estado_Insc").val(trim(i.FERECEPCION));
+                    }
+                },
+            });
+
+        });
+
+        $('#Cod_Est_Insc').bind("change", function () {
+            if ($('#Cod_Est_Insc').val() == '26') {
+                $('#rowMotivo').removeClass("display-hidden");
+                $('#rowResolucion').removeClass("display-hidden");
+            } else {
+                $('#rowMotivo').addClass("display-hidden");
+                $('#rowResolucion').addClass("display-hidden");
+            }
+
+        });
+
+        $("#Cod_Tipo_Etapa").bind("change", function () {
+            $("#Cod_Est_Insc").empty();
+            $("#Cod_Est_Insc").append("<option disabled='disabled' selected='selected' value='' >@CO_Constante.menSeleccionHtmlSelect</option>");
+            $.ajax({
+                url: '@Url.Action("GetsTipoEtapa", "api/EtapaApi", new { area= "OrgPolitica" })',
+                type: "GET",
+                data: { "CODTIPOMOV": $("#Cod_Tipo_Etapa").val() },
+                contentType: "application/json;chartset=utf-8",
+                success: function (result) {
+                    $.each(result.data, function (i, item) {
+                        $("#Cod_Est_Insc").append("<option value=" + item.Cod_Estado_Inscrip + ">" + item.Des_Estado_Inscrip + "</option>");
+                    });
+                },
+            });
+
+        });
+
+
+        $("#frmEtapa").validate({
+            errorClass: "text-danger",
+            validClass: "text-success",
+            errorElement: "p",
+            ignoreTitle: true,
+            highlight: function (element) { $(element).addClass('border-danger'); },
+            unhighlight: function (element) { $(element).removeClass('border-danger'); }
+        });
+
+        $("#btnGrabaEtapa").click(function () {
+            if ($("#frmEtapa").valid()) {
+                var form = $("#frmEtapa");
+                $(form).addHidden('Cod_OP', $('#Cod_OP').val());
+                $(form).addHidden('Cod_Tipo_Etapa', $('#Cod_Tipo_Etapa').val());
+                var Etapa = $(form).serialize();
+                $.ajax({
+                    url: '@Url.Action("Graba", "api/EtapaApi", new { area= "OrgPolitica" })',
+                    dataType: "json",
+                    type: 'POST',
+                    cache: false,
+                    data: Etapa,
+                    cache: false,
+                    success: function (d) {
+                        if (d.success == true) { pCargaEtapas(); $("#WinComunTitulo").text('Etapa N° ' + d.data.Cod_Correlativo); }
+                        MostrarMensaje(d.Message);
+                    }
+                });
+            }
+        });
+
+
+
+    });
+
+
+
+</script>

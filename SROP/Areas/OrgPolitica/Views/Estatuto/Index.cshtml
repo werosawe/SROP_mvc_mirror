@@ -1,0 +1,74 @@
+﻿@model BE_Estatuto
+<div class="card card-block">
+    <div class="form-actions text-lg-right mb-1">
+        <button data-toggle="modal" data-target="#WinComun" type="button" id="btnNuevoEstatuto" class="btn btn-success btn-sm" data-codigo='{"Orden":0, "Cod_OP": @Model.Cod_OP, "ESTADOPAGINA": "@enumEstadoPagina.Nuevo" }'>
+            <i class="icon-plus3"></i> Nuevo Estatuto
+        </button>
+    </div>
+    <div id="divEstatuto" class="card-block"></div>
+</div>
+<script type="text/javascript">
+
+    function pCargaEstatuto(param) {
+        $("#divEstatuto").empty();
+        var criterio = param + '&' + $.param({ 'Cod_OP': @Model.Cod_OP });
+        $.ajax({
+            url: '@Url.Action("EstatutoLista", "Estatuto", new { area= "OrgPolitica" })',
+            type: 'GET',
+            cache: false,
+            async: true,
+            data: criterio,
+            success: function (data) {
+                $("#divEstatuto").html(data);
+            },
+            complete: function () {
+                $('#tblEstatuto').tablaFuncional({ funcion: 'pCargaEstatuto', data: param });
+                $('[data-toggle="eliminaestatuto"]').confirmar({ funcion: 'ConfirmaEliminaEstatuto' });
+                $(".editEstatuto").click(pMantenimientoEstatuto);
+            }
+        });
+    }
+
+    $(function () {
+        $("#btnNuevoEstatuto").click(pMantenimientoEstatuto);
+        pCargaEstatuto();
+    });
+
+    pMantenimientoEstatuto = function () {
+        $("#WinComunContenido").empty();
+            var codigo = $(this).data("codigo");
+            $.ajax({
+                url: '@Url.Action("Mantenimiento","Estatuto", new { area = "OrgPolitica" } )',
+                type: 'Get',
+                cache: false,
+                data: codigo,
+                success: function (data) {
+                    $("#WinComunContenido").append(data);
+                    $("#WinComunTitulo").text('Detalle Estatuto');
+                    $('#WinComun').modal({ backdrop: 'static' })
+                },
+            });
+        }
+
+        function ConfirmaEliminaEstatuto(data) {
+            $.ajax({
+                url: '@Url.Action("Elimina", "api/EstatutoApi", new { area= "OrgPolitica" })',
+                dataType: "json",
+                type: 'POST',
+                cache: false,
+                data: data,
+                success: function (data) {
+                    MostrarMensaje(data.Message);
+                },
+                complete: function () {
+                    pCargaEstatuto();
+                    $('[data-toggle="eliminaestatuto"]').confirmar({ funcion: 'ConfirmaEliminaEstatuto' });
+                    $(".editEstatuto").click(pMantenimientoEstatuto);
+                }
+            });
+        }
+
+
+
+</script>
+

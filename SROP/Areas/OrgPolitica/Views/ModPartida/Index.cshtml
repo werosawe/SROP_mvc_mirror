@@ -1,0 +1,76 @@
+﻿@model BE_Partida
+<div class="card card-block">
+    <div class="form-actions text-lg-right mb-1">
+        <button data-toggle="modal" data-target="#WinComun" type="button" id="btnNuevaPartida" class="btn btn-success btn-sm" data-codigo='{"Cod_Correlativo":0, "Cod_OP": @Model.Cod_OP, "ESTADOPAGINA": "@enumEstadoPagina.Nuevo" }'>
+            <i class="icon-plus3"></i> Nueva Modificación de Partida
+        </button>
+    </div>
+    <div id="divPartida" class="card-block"></div>
+</div>
+<script type="text/javascript">
+
+    function GetsPartida(param) {
+        $("#divPartida").empty();
+        var criterio = param + '&' + $.param({ 'Cod_OP': @Model.Cod_OP });
+        $.ajax({
+            url: '@Url.Action("Gets", "ModPartida", new { area= "OrgPolitica" })',
+            type: 'GET',
+            cache: false,
+            async: true,
+            data: criterio,
+            success: function (data) {
+                $("#divPartida").html(data);
+            },
+            complete: function () {
+                $('#tblPartida').tablaFuncional({ funcion: 'GetsPartida', data: param });
+                $('[data-toggle="elimina-partida"]').confirmar({ funcion: 'ConfirmaEliminaPartida' });
+                $(".edita-partida").click(GetPartida);
+            }
+        });
+    }
+
+    $(function () {
+        $("#btnNuevaPartida").click(GetPartida);
+        GetsPartida();
+    });
+
+    GetPartida = function () {
+        $("#WinComunContenido").empty();
+        var codigo = $(this).data("codigo");
+        $.ajax({
+            url: '@Url.Action("Get", "ModPartida", new { area = "OrgPolitica" } )',
+            type: 'Get',
+            cache: false,
+            data: codigo,
+            success: function (data) {
+                $("#WinComunContenido").append(data);
+                $("#WinComunTitulo").text('Modificación N° ' + codigo.Cod_Correlativo);
+                $('#WinComun').modal({ backdrop: 'static' })
+            },
+        });
+    }
+
+    function ConfirmaEliminaPartida(data) {
+        $.ajax({
+            url: '@Url.Action("Elimina", "api/ModPartidaApi", new { area= "OrgPolitica" })',
+            dataType: "json",
+            type: 'POST',
+            cache: false,
+            data: data,
+            success: function (data) {
+                MostrarMensaje(data.Message);
+            },
+            complete: function () {
+                GetsPartida();
+                $('[data-toggle="elimina-partida"]').confirmar({ funcion: 'ConfirmaEliminaPartida' });
+                $(".edita-partida").click(GetPartida);
+            }
+        });
+    }
+
+
+
+
+  
+
+</script>

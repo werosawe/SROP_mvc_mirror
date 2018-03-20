@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema targetNamespace="http://tempuri.org/XMLSchema.xsd" elementFormDefault="qualified"
+	xmlns="http://tempuri.org/XMLSchema.xsd" xmlns:mstns="http://tempuri.org/XMLSchema.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Candidatos">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="dni" type="xs:string" />
+				<xs:element name="cod_op" type="xs:string" />
+                <xs:element name="Nombre_OP" type="xs:string" />
+                <xs:element name="Tipo_OP" type="xs:string" />
+                <xs:element name="Estado_Insc" type="xs:string" />
+                <xs:element name="Ubigeo_OP" type="xs:string" />                
+                <xs:element name="nombre_completo" type="xs:string" />
+				<xs:element name="posicion" type="xs:integer" />
+				<xs:element name="cargo" type="xs:string" />
+				<xs:element name="estado_candidato" type="xs:string" />				
+				<xs:element name="region" type="xs:string" />
+				<xs:element name="provincia" type="xs:string" />
+				<xs:element name="distrito" type="xs:string" />
+				<xs:element name="Tipo_Elecc" type="xs:string" />
+				<xs:element name="Anno_Elecc" type="xs:string" />
+				<xs:element name="Cargo_Elecc" type="xs:string" />
+				<xs:element name="Pos_Cargo" type="xs:string" />
+				<xs:element name="Estado_Candidato" type="xs:string" />
+				<xs:element name="Ubigeo_Elecc" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

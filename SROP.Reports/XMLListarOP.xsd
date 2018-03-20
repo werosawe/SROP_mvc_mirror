@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="XMLListarOP" targetNamespace="http://tempuri.org/XMLListarOP.xsd" elementFormDefault="qualified"
+	xmlns="http://tempuri.org/XMLListarOP.xsd" xmlns:mstns="http://tempuri.org/XMLListarOP.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="ListarOP_PP">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cod_op" type="xs:integer" />
+                <xs:element name="des_op" type="xs:string" />
+                <xs:element name="des_siglas" type="xs:string" />
+                <xs:element name="cod_tipo_op" type="xs:string" />
+                <xs:element name="des_est_insc" type="xs:string" />
+                <xs:element name="fec_movim" type="xs:date" />
+                <xs:element name="usuario" type="xs:string" />
+                <xs:element name="flg_estado_op" type="xs:integer" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ListarOP_05">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="cod_op" type="xs:integer" />
+				<xs:element name="des_op" type="xs:string" />
+				<xs:element name="des_tipo_op" type="xs:string" />
+				<xs:element name="fec_solic" type="xs:date" />
+				<xs:element name="des_estado_inscrip" type="xs:string" />
+				<xs:element name="fec_estado" type="xs:date" />
+				<xs:element name="region" type="xs:string" />
+				<xs:element name="provincia" type="xs:string" />
+				<xs:element name="distrito" type="xs:string" />
+                <xs:element name="des_ente" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Reporte_Insc_OP">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="cod_exp" type="xs:string" />
+				<xs:element name="cod_exp_op" type="xs:string" />
+				<xs:element name="cod_op" type="xs:string" />
+				<xs:element name="cod_ficha" type="xs:string" />
+				<xs:element name="nro_libro" type="xs:integer" />
+				<xs:element name="tipo_libro" type="xs:string" />
+				<xs:element name="des_op" type="xs:string" />
+				<xs:element name="des_siglas" type="xs:string" />
+				<xs:element name="cod_tipo_op" type="xs:string" />
+				<xs:element name="des_tipo_op" type="xs:string" />
+				<xs:element name="des_tipo_libro" type="xs:string" />
+				<xs:element name="cod_ambito" type="xs:string" />
+				<xs:element name="des_ambito" type="xs:string" />
+				<xs:element name="cod_ente" type="xs:string" />
+				<xs:element name="des_direcc_op" type="xs:string" />
+				<xs:element name="tip_calle" type="xs:string" />
+				<xs:element name="num_num" type="xs:string" />
+				<xs:element name="num_dpto" type="xs:string" />
+				<xs:element name="cod_distrito" type="xs:string" />
+				<xs:element name="des_distrito" type="xs:string" />
+				<xs:element name="cod_provincia" type="xs:string" />
+				<xs:element name="des_provincia" type="xs:string" />
+				<xs:element name="cod_region" type="xs:string" />
+				<xs:element name="des_region" type="xs:string" />
+				<xs:element name="des_telef_op_01" type="xs:string" />
+				<xs:element name="des_telef_op_02" type="xs:string" />
+				<xs:element name="des_fax_op" type="xs:string" />
+				<xs:element name="des_correo_op" type="xs:string" />
+				<xs:element name="observaciones" type="xs:string" />
+				<xs:element name="pag_web" type="xs:string" />
+				<xs:element name="des_estado_inscrip" type="xs:string" />
+				<xs:element name="dni_per_leg" type="xs:string" />
+				<xs:element name="apepat_leg" type="xs:string" />
+				<xs:element name="apemat_leg" type="xs:string" />
+				<xs:element name="nombre_leg" type="xs:string" />
+				<xs:element name="sexo_leg" type="xs:string" />
+				<xs:element name="dni_per_tec" type="xs:string" />
+				<xs:element name="apepat_tec" type="xs:string" />
+				<xs:element name="apemat_tec" type="xs:string" />
+				<xs:element name="nombre_tec" type="xs:string" />
+				<xs:element name="sexo_tec" type="xs:string" />
+				<xs:element name="dni_per_alt" type="xs:string" />
+				<xs:element name="apepat_alt" type="xs:string" />
+				<xs:element name="apemat_alt" type="xs:string" />
+				<xs:element name="nombre_alt" type="xs:string" />
+				<xs:element name="sexo_alt" type="xs:string" />
+				<xs:element name="dni_per_tec_alt" type="xs:string" />
+				<xs:element name="apepat_tec_alt" type="xs:string" />
+				<xs:element name="apemat_tec_alt" type="xs:string" />
+				<xs:element name="nombre_tec_alt" type="xs:string" />
+				<xs:element name="sexo_tec_alt" type="xs:string" />
+				<xs:element name="logo" type="xs:base64Binary" />				
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ListarOP_arc">
+		<xs:complexType>
+			<xs:sequence>				
+				<xs:element name="cod_op" type="xs:integer" />
+				<xs:element name="des_op" type="xs:string" />
+				<xs:element name="cod_tipo_op" type="xs:string" />
+				<xs:element name="des_tipo_op" type="xs:string" />
+				<xs:element name="fec_solic" type="xs:date" />
+				<xs:element name="des_estado_inscrip" type="xs:string" />
+				<xs:element name="fec_estado" type="xs:date" />
+				<xs:element name="region" type="xs:string" />
+				<xs:element name="provincia" type="xs:string" />
+				<xs:element name="distrito" type="xs:string" />				
+				<xs:element name="cod_arc" type="xs:string" />				
+				<xs:element name="tx_ubic_arc" type="xs:string" />	
+				<xs:element name="Num_Tom_Leg" type="xs:integer" />				
+				<xs:element name="Num_Tom_Pla" type="xs:integer" />															
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

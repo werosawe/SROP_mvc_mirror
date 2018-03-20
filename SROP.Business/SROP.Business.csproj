@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion />
+    <SchemaVersion />
+    <ProjectGuid>{30FF8F5E-FAB7-4C2E-A124-41B9C432C322}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SROP.Business</RootNamespace>
+    <AssemblyName>SROP.Business</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <SccProjectName />
+    <SccLocalPath />
+    <SccAuxPath />
+    <SccProvider />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>SROP.Business.xml</DocumentationFile>
+    <NoWarn>1591</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>SROP.Business.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Oracle.DataAccess, Version=2.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BL_Abogado.cs" />
+    <Compile Include="BL_ActaFundacion.cs" />
+    <Compile Include="BL_Adherente.cs" />
+    <Compile Include="BL_Afiliados.cs" />
+    <Compile Include="BL_Alianza.cs" />
+    <Compile Include="BL_Ambito.cs" />
+    <Compile Include="BL_Archivo.cs" />
+    <Compile Include="BL_Area.cs" />
+    <Compile Include="BL_Asiento.cs" />
+    <Compile Include="BL_Auto.cs" />
+    <Compile Include="BL_BusquedaOP.cs" />
+    <Compile Include="BL_Cargo.cs" />
+    <Compile Include="BL_CargosOP.cs" />
+    <Compile Include="BL_Cargos_AltasBajas.cs" />
+    <Compile Include="BL_ComiteAfil.cs" />
+    <Compile Include="BL_ComiteEntrega.cs" />
+    <Compile Include="BL_ComiteLista.cs" />
+    <Compile Include="BL_ComiteVF.cs" />
+    <Compile Include="BL_Constancia.cs" />
+    <Compile Include="BL_ConstanciaAfil.cs" />
+    <Compile Include="BL_Directivo.cs" />
+    <Compile Include="BL_DocLegales.cs" />
+    <Compile Include="BL_Ente.cs" />
+    <Compile Include="BL_EstadoInsc.cs" />
+    <Compile Include="BL_EstadoOP.cs" />
+    <Compile Include="BL_Estatuto.cs" />
+    <Compile Include="BL_Etapa.cs" />
+    <Compile Include="BL_FunctionOP.cs" />
+    <Compile Include="BL_HistAfil.cs" />
+    <Compile Include="BL_Menu.cs" />
+    <Compile Include="BL_MotivoVin.cs" />
+    <Compile Include="BL_OP.cs" />
+    <Compile Include="BL_opPDF.cs" />
+    <Compile Include="BL_PadronAfil.cs" />
+    <Compile Include="BL_PAGINA.cs" />
+    <Compile Include="BL_Partida.cs" />
+    <Compile Include="BL_Persona.cs" />
+    <Compile Include="BL_RenunciaEval.cs" />
+    <Compile Include="BL_Representantes.cs" />
+    <Compile Include="BL_ReqTipoOP.cs" />
+    <Compile Include="BL_Requisito.cs" />
+    <Compile Include="BL_Resolucion.cs" />
+    <Compile Include="BL_ResulResol.cs" />
+    <Compile Include="BL_Roles.cs" />
+    <Compile Include="BL_Sede.cs" />
+    <Compile Include="BL_Sintesis.cs" />
+    <Compile Include="BL_Error.cs" />
+    <Compile Include="BL_TipoAsiento.cs" />
+    <Compile Include="BL_TipoBaja.cs" />
+    <Compile Include="BL_TipoCancel.cs" />
+    <Compile Include="BL_TipoMov.cs" />
+    <Compile Include="BL_TipoOP.cs" />
+    <Compile Include="BL_Tipo.cs" />
+    <Compile Include="BL_Ubigeo.cs" />
+    <Compile Include="BL_Usuario.cs" />
+    <Compile Include="MTD\BL_Documento.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\wsMTD\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SROP.DataAccess\SROP.DataAccess.csproj">
+      <Project>{52f1635c-4fb4-433a-a405-759cf1831b94}</Project>
+      <Name>SROP.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SROP.Entities\SROP.Entities.csproj">
+      <Project>{dfd8206f-4e06-45ca-b443-8f793fac4755}</Project>
+      <Name>SROP.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SROP.Session\SROP.Session.csproj">
+      <Project>{4e267d53-aba2-40b1-986e-6e517162828d}</Project>
+      <Name>SROP.Session</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilitario\Utilitario.csproj">
+      <Project>{2f7d617b-0795-4407-8709-e711fac94ae9}</Project>
+      <Name>Utilitario</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\wsMTD\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\wsMTD\ws_MTD.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://aplicaciones007.jne.gob.pe/ws_rop/ws_MTD.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\wsMTD\</RelPath>
+      <UpdateFromURL>http://aplicaciones007.jne.gob.pe/ws_rop/ws_MTD.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SROP_Business_wsMTD_ws_MTD</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\wsMTD\ws_MTD.disco" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

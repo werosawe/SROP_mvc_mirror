@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="XMLConstancias" targetNamespace="http://tempuri.org/XMLConstancias.xsd" elementFormDefault="qualified"
+	xmlns="http://tempuri.org/XMLConstancias.xsd" xmlns:mstns="http://tempuri.org/XMLConstancias.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Constancia">
+		<xs:complexType>
+			<xs:sequence>				
+				<xs:element name="COD_OP" type="xs:integer" />
+				<xs:element name="des_op" type="xs:string" />
+				<xs:element name="cod_tipo_op" type="xs:string" />
+				<xs:element name="des_tipo_op" type="xs:string" />
+				<xs:element name="region" type="xs:string" />
+				<xs:element name="provincia" type="xs:string" />
+				<xs:element name="distrito" type="xs:string" />
+				<xs:element name="cod_dni" type="xs:string" />
+				<xs:element name="apepat" type="xs:string" />
+				<xs:element name="apemat" type="xs:string" />
+				<xs:element name="nombre" type="xs:string" />				
+				<xs:element name="num_const" type="xs:integer" />
+				<xs:element name="fec_const" type="xs:date" />
+				<xs:element name="dni_solic" type="xs:string" />
+				<xs:element name="solicitante" type="xs:string" />
+				<xs:element name="filename" type="xs:string" />				
+				<xs:element name="tipo_const" type="xs:integer" />
+				<xs:element name="x_user_crea" type="xs:string" />
+				<xs:element name="x_date_crea" type="xs:date" />
+				<xs:element name="flg_delete" type="xs:integer" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

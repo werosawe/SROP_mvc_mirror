@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="XMLAsistentes" targetNamespace="http://tempuri.org/XMLAsistentes.xsd" elementFormDefault="qualified"
+	xmlns="http://tempuri.org/XMLAsistentes.xsd" xmlns:mstns="http://tempuri.org/XMLAsistentes.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="asistente">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="userid" type="xs:string" />
+				<xs:element name="username" type="xs:string" />
+				<xs:element name="fec_ini" type="xs:date" />
+				<xs:element name="cod_op" type="xs:integer" />
+				<xs:element name="des_op" type="xs:string" />
+				<xs:element name="cod_tipo_op" type="xs:string" />
+				<xs:element name="des_tipo_op" type="xs:string" />
+				<xs:element name="region" type="xs:string" />
+				<xs:element name="provincia" type="xs:string" />
+				<xs:element name="distrito" type="xs:string" />
+				<xs:element name="des_estado_inscrip" type="xs:string" />
+				<xs:element name="fec_movim" type="xs:date" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Tareas">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="userid" type="xs:string" />
+				<xs:element name="username" type="xs:string" />				
+				<xs:element name="cod_op" type="xs:integer" />
+				<xs:element name="des_op" type="xs:string" />
+				<xs:element name="cod_tipo_op" type="xs:string" />
+				<xs:element name="des_tarea" type="xs:string" />
+				<xs:element name="fec_asig" type="xs:date" />
+				<xs:element name="fec_fin" type="xs:date" />
+				<xs:element name="can_op_pend" type="xs:integer" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

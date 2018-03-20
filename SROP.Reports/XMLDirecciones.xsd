@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="XMLDirecciones" targetNamespace="http://tempuri.org/XMLDirecciones.xsd" elementFormDefault="qualified"
+	xmlns="http://tempuri.org/XMLDirecciones.xsd" xmlns:mstns="http://tempuri.org/XMLDirecciones.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Direcciones">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="des_Tipo_OP" type="xs:string" />
+				<xs:element name="cod_op" type="xs:string" />
+				<xs:element name="Des_OP" type="xs:string" />
+				<xs:element name="des_Estado_Inscrip" type="xs:string" />
+				<xs:element name="direccion" type="xs:string" />
+				<xs:element name="telefono_1" type="xs:string" />
+				<xs:element name="telefono_2" type="xs:string" />
+				<xs:element name="region" type="xs:string" />
+				<xs:element name="provincia" type="xs:string" />
+				<xs:element name="distrito" type="xs:string" />
+				<xs:element name="region_direcc" type="xs:string" />
+				<xs:element name="provincia_direcc" type="xs:string" />
+				<xs:element name="distrito_direcc" type="xs:string" />
+				<xs:element name="des_correo_op" type="xs:string" />
+				<xs:element name="pag_web" type="xs:string" />
+				<xs:element name="des_rep" type="xs:string" />
+				<xs:element name="cod_dni" type="xs:string" />
+				<xs:element name="apepat" type="xs:string" />
+				<xs:element name="apemat" type="xs:string" />
+				<xs:element name="nombre" type="xs:string" />
+				<xs:element name="logo" type="xs:base64Binary" minOccurs="0" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

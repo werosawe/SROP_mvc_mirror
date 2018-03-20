@@ -1,0 +1,221 @@
+﻿@model BE_USUARIO
+<!DOCTYPE html>
+<html lang="en" data-textdirection="LTR" class="loading">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="Sistema de Registros de Organizaciones Políticas.">
+    <meta name="keywords" content="sistema de organizaciones politicas, srop, rop, dnrop, jurado nacional de elecciones, simbolos, afiliados">
+    <meta name="author" content="Jurado Nacional de Elecciones">
+    <title>Login - Sistema de Registros de Organizaciones Políticas</title>
+    <link rel="icon" sizes="60x60" href="~/wwwroot/images/icon/icon-60.png">
+    <link rel="icon" sizes="76x76" href="~/wwwroot/images/icon/icon-76.png">
+    <link rel="icon" sizes="120x120" href="~/wwwroot/images/icon/icon-120.png">
+    <link rel="icon" sizes="152x152" href="~/wwwroot/images/icon/icon-152.png">  
+    <link rel="shortcut icon" type="image/png" href="~/wwwroot/images/icon/icon-32.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <!-- BEGIN VENDOR CSS-->
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/lib/bootstrap/css/bootstrap.css">
+    <!-- font icons-->
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/lib/fonts/icomoon.css">
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/lib/fonts/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/lib/vendors/css/sliders/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/lib/vendors/css/extensions/pace.css">
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/lib/vendors/css/forms/icheck/icheck.css">
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/lib/vendors/css/forms/icheck/custom.css">
+    <!-- END VENDOR CSS-->
+    <!-- BEGIN ROBUST CSS-->
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/lib/bootstrap/css/bootstrap-extended.css">
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/lib/app/css/app.css">
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/lib/colors/colors.css">
+    <!-- END ROBUST CSS-->
+    <!-- BEGIN Page Level CSS-->
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/lib/menu/css/vertical-menu.css">
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/lib/menu/css/vertical-overlay-menu.css">
+
+
+    @*<link rel="stylesheet" type="text/css" href="../../../app-assets/css/pages/login-register.min.css">*@
+    <!-- END Page Level CSS-->
+    <!-- BEGIN Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/css/Site.css">
+    <!-- END Custom CSS-->
+
+</head>
+<body data-open="click" data-menu="vertical-menu" data-col="1-column" class="vertical-layout vertical-menu 1-column bg-cyan bg-grey fixed-navbar">
+    <!-- navbar-fixed-top-->
+    <nav class="header-navbar navbar navbar-with-menu navbar-fixed-top navbar-dark navbar-shadow">
+        <div class="navbar-wrapper">
+            <div class="navbar-header">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item mobile-menu hidden-md-up float-xs-left"><a class="nav-link nav-menu-main menu-toggle hidden-xs"><i class="icon-menu5 font-large-1"></i></a></li>
+                    <li class="nav-item"><a href="index.html" class="navbar-brand nav-link"><img alt="branding logo" src="@Url.Content("~/wwwroot/images/logo-light.png")" data-expand="@Url.Content("~/wwwroot/images/logo-light.png")" data-collapse="@Url.Content("~/wwwroot/images/logo-small.png")" class="brand-logo"></a></li>
+                    <li class="nav-item hidden-md-up float-xs-right"><a data-toggle="collapse" data-target="#navbar-mobile" class="nav-link open-navbar-container"><i class="icon-ellipsis pe-2x fa-rotate-90"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="fullscreen-search-overlay"></div>
+    <!-- ////////////////////////////////////////////////////////////////////////////-->
+    <div class="app-content content container-fluid">
+        <div class="content-wrapper">
+            <div class="content-body">
+                <section class="col-md-4 offset-md-4 col-xs-8 offset-xs-2 box-shadow-2 p-0" >
+                    <div class="card border-grey border-lighten-3 px-2 py-2 row mb-0">
+                        <div class="card-header no-border">
+                            <div class="card-title text-xs-center">
+                                <img src="@Url.Content("~/wwwroot/images/logo-light-negro.png")" alt="branding logo">
+                            </div>
+                            <h6 class="card-subtitle line-on-side text-muted text-xs-center font-small-3 pt-2"><span>Login del SROP</span></h6>
+                        </div>
+                        <div class="card-body collapse in">
+                            <div class="card-block">
+                                <span id="pMensaje">
+                                    @{
+                                        Html.RenderAction("Mensaje", "Manage", new { area = DBNull.Value });
+                                        //Html.RenderPartial(CO_Constante.NO_VARIABLE_GLOBAL_RUTA_VIEW_MENSAJE, Html.ViewData.ModelState.AllErrors());
+                                    }
+                                </span>
+                                <form class="form-horizontal" method="post" id="frmLogin" autocomplete="off" action='@Url.Action("Login", "Account", new { area = System.DBNull.Value })' >                                   
+                                    <div class="form-group position-relative has-icon-left">
+                                        @Html.text(x => x.UserId,  new {@class= "form-control input-lg", tabindex="1" },null,true,true)
+                                        <div class="form-control-position">
+                                            <i class="icon-head"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-group position-relative has-icon-left">
+                                        @Html.password(x => x.PasswordInTextBox, new { @class = "form-control input-lg", tabindex = "2" }, null, true, true)
+                                        <div class="form-control-position"><i class="icon-key3"></i></div>
+                                    </div>
+                                    <div class="form-group position-relative has-icon-left">
+                                        <div class="input-group">
+                                            @*<span id="btnCapcha" title="Cambiar imagen" class="input-group-addon btn btn-default"><i class="icon-refresh"></i></span>*@
+                                            <span class="input-group-addon" id="divCapcha"></span>
+                                        </div>
+                                    </div>
+                                    <div class="input-group input-group-lg">
+                                        @Html.text(x => x.TXCAPCHA, new { @class = "form-control input-lg center", tabindex = "3" }, null, true, true)
+                                       @* <input type="text" class="form-control input-lg text-center" id="TXCAPCHA" name="TXCAPCHA" placeholder="Ingrese codigo" required aria-label="Amount" tabindex="3" />*@
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-danger" id="btnCapcha" type="button" title="Mostrar otra imagen"><i class="icon-refresh"></i></button>
+                                        </span>
+                                    </div>
+                                    <div class="form-actions">
+                                        @*<button type="submit" class="btn btn-success">Submit <i class="icon-thumbs-up position-right"></i></button>*@
+                                        <button type="submit" id="btnIngresa" class="btn btn-danger btn-lg btn-block"><i class="icon-unlock2"></i> Login</button>
+                                    </div>
+                                    @*@Html.ActionLink("upoad", "ClientUpload","Manage", new {area="" })*@
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- ////////////////////////////////////////////////////////////////////////////-->
+
+    <footer class="footer navbar-fixed-bottom footer-dark navbar-border">
+        <p class="clearfix text-muted text-sm-center mb-0 px-2"><span class="float-md-left d-xs-block d-md-inline-block">&copy; 2017 - Dirección Nacional de Registro de Organizaciones Políticas </span><span class="float-md-right d-xs-block d-md-inline-block"><a href="http://www.jne.gob.pe" target="_blank" class="text-bold-800 grey darken-2">Jurado Nacional de Elecciones<i class="logo-jne-footer pink"></i></a></span></p>
+    </footer>
+
+    <!-- BEGIN VENDOR JS-->
+    <!-- build:js app-assets/js/vendors.min.js-->
+    <script src="~/wwwroot/lib/jquery/jquery.js" type="text/javascript"></script>
+    <script src="~/wwwroot/lib/vendors/js/ui/tether.min.js" type="text/javascript"></script>
+    <script src="~/wwwroot/lib/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+    <script src="~/wwwroot/lib/vendors/js/ui/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+    <script src="~/wwwroot/lib/vendors/js/ui/unison.min.js" type="text/javascript"></script>
+    <script src="~/wwwroot/lib/vendors/js/ui/blockUI.min.js" type="text/javascript"></script>
+    <script src="~/wwwroot/lib/vendors/js/ui/jquery.matchHeight-min.js" type="text/javascript"></script>
+    <script src="~/wwwroot/lib/vendors/js/ui/jquery-sliding-menu.js" type="text/javascript"></script>
+    <script src="~/wwwroot/lib/vendors/js/sliders/slick/slick.min.js" type="text/javascript"></script>
+    <script src="~/wwwroot/lib/vendors/js/ui/screenfull.min.js" type="text/javascript"></script>
+    <script src="~/wwwroot/lib/vendors/js/extensions/pace.min.js" type="text/javascript"></script>
+    <!-- /build-->
+    <!-- BEGIN VENDOR JS-->
+    <!-- BEGIN PAGE VENDOR JS-->
+    <script src="~/wwwroot/lib/vendors/js/forms/extended/typeahead/typeahead.bundle.min.js" type="text/javascript"></script>
+    <script src="~/wwwroot/lib/vendors/js/forms/extended/typeahead/handlebars.js" type="text/javascript"></script>
+
+    @*<script src="~/wwwroot/lib/vendors/js/forms/validation/jqBootstrapValidation.js" type="text/javascript"></script>*@
+  
+    <script src="~/wwwroot/lib/jquery_validation/jquery.validate.js" type="text/javascript"></script>
+    <script src="~/wwwroot/lib/jquery_validation/messages_es_PE.js" type="text/javascript"></script>
+    <script src="~/wwwroot/lib/jquery_validation/additional-methods.js" type="text/javascript"></script>
+    <script src="~/wwwroot/lib/jquery_validation_unobtrusive/jquery.validate.unobtrusive.js" type="text/javascript"></script>
+    @*<script src="~/wwwroot/lib/vendors/js/forms/icheck/icheck.min.js" type="text/javascript"></script>*@
+    <!-- END PAGE VENDOR JS-->
+    <!-- BEGIN ROBUST JS-->
+    <!-- build:js app-assets/js/app.min.js-->
+    <script src="~/wwwroot/lib/menu/js/app-menu.js" type="text/javascript"></script>
+    <script src="~/wwwroot/lib/app/js/app.js" type="text/javascript"></script>
+    <script src="~/wwwroot/lib/vendors2/js/ui/fullscreenSearch.js" type="text/javascript"></script>
+    <script src="~/wwwroot/js/site.js" type="text/javascript"></script>
+    <script type="text/javascript"> pRutaApp('@Url.Content("~/")')</script>
+    <!-- /build-->
+    <!-- END ROBUST JS-->
+    <!-- BEGIN PAGE LEVEL JS-->
+   @* <script src="../../../app-assets/js/scripts/forms/form-login-register.min.js" type="text/javascript"></script>*@
+    @*<script src="~/wwwroot/lib/vendors/js/forms/validation/jquery.validate.min.js" type="text/javascript"></script>*@
+    <!-- END PAGE LEVEL JS-->
+
+    <script type="text/javascript">
+
+        $(function () {
+            pCargarCapcha();
+            $('#btnCapcha').click(pCargarCapcha);
+            $('#UserName').focus();
+
+            $("#frmLogin").validate({
+                errorClass: "text-danger",
+                validClass: "text-success",
+                errorElement: "p",
+                ignoreTitle: true,
+                highlight: function (element) {
+                    $(element).addClass('border-danger');
+                },
+                unhighlight: function (element) {
+                    $(element).removeClass('border-danger');
+                },
+                submitHandler: function (form) {
+                    $('#btnIngresa').Espera();
+                    return true;
+                },
+                invalidHandler: function (event, validator) {
+                    $('#btnIngresa').TerminaEspera();
+                }
+            });
+        });
+
+        
+
+        pCargarCapcha = function () {
+            var uri = '@Url.Action("GetCapchaLg", "Manage")';
+            $.ajax({
+                url: uri,
+                type: 'Get',
+                cache: false,
+                contentType: 'application/json',
+                data: {},
+                success: function (data) {
+                    $('#TXCAPCHA').val(data.TXCAPCHA);
+                    MostrarCapcha(data.base64imagen);
+                },
+                //complete: function () {
+
+                //    setTimeout(function () { $("#NU_DOCUMENTO").focus(); }, 500);
+                //}
+            });
+        }
+
+        var MostrarCapcha = function (data) { var img = "<img  alt='Captcha' style='max-width: 100%; max-height: 100%;' src='" + "data:image/jpg;base64," + data + "' />"; $("#divCapcha").html(img) };
+
+
+    </script>
+
+
+</body>
+</html>

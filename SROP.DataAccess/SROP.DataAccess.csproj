@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion />
+    <SchemaVersion />
+    <ProjectGuid>{52F1635C-4FB4-433A-A405-759CF1831B94}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SROP.DataAccess</RootNamespace>
+    <AssemblyName>SROP.DataAccess</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <SccProjectName />
+    <SccLocalPath />
+    <SccAuxPath />
+    <SccProvider />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>SROP.DataAccess.xml</DocumentationFile>
+    <NoWarn>1591</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>SROP.DataAccess.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Oracle.DataAccess, Version=2.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DA_Abogado.cs" />
+    <Compile Include="DA_ActaFundacion.cs" />
+    <Compile Include="DA_Adherente.cs" />
+    <Compile Include="DA_Afiliados.cs" />
+    <Compile Include="DA_Alianza.cs" />
+    <Compile Include="DA_Ambito.cs" />
+    <Compile Include="DA_Archivo.cs" />
+    <Compile Include="DA_Area.cs" />
+    <Compile Include="DA_Asiento.cs" />
+    <Compile Include="DA_Auto.cs" />
+    <Compile Include="DA_BusquedaOP.cs" />
+    <Compile Include="DA_Cargo.cs" />
+    <Compile Include="DA_CargosOP.cs" />
+    <Compile Include="DA_Cargos_AltasBajas.cs" />
+    <Compile Include="DA_ComiteAfil.cs" />
+    <Compile Include="DA_ComiteEntrega.cs" />
+    <Compile Include="DA_ComiteLista.cs" />
+    <Compile Include="DA_ComiteVF.cs" />
+    <Compile Include="DA_Constancia.cs" />
+    <Compile Include="DA_Directivo.cs" />
+    <Compile Include="DA_DocLegales.cs" />
+    <Compile Include="DA_Ente.cs" />
+    <Compile Include="DA_EstadoInsc.cs" />
+    <Compile Include="DA_EstadoOP.cs" />
+    <Compile Include="DA_Estatuto.cs" />
+    <Compile Include="DA_Etapa.cs" />
+    <Compile Include="DA_HistAfil.cs" />
+    <Compile Include="DA_Menu.cs" />
+    <Compile Include="DA_MotivoVin.cs" />
+    <Compile Include="DA_OP.cs" />
+    <Compile Include="DA_opPDF.cs" />
+    <Compile Include="DA_PadronAfil.cs" />
+    <Compile Include="DA_PAGINA.cs" />
+    <Compile Include="DA_Partida.cs" />
+    <Compile Include="DA_Persona.cs" />
+    <Compile Include="DA_RenunciaEval.cs" />
+    <Compile Include="DA_Reportes.cs" />
+    <Compile Include="DA_Representantes.cs" />
+    <Compile Include="DA_ReqTipoOP.cs" />
+    <Compile Include="DA_Requisito.cs" />
+    <Compile Include="DA_Resolucion.cs" />
+    <Compile Include="DA_ResulResol.cs" />
+    <Compile Include="DA_Roles.cs" />
+    <Compile Include="DA_Sede.cs" />
+    <Compile Include="DA_Sintesis.cs" />
+    <Compile Include="DA_Error.cs" />
+    <Compile Include="DA_TipoAsiento.cs" />
+    <Compile Include="DA_TipoBaja.cs" />
+    <Compile Include="DA_TipoCancel.cs" />
+    <Compile Include="DA_TipoMov.cs" />
+    <Compile Include="DA_TipoOP.cs" />
+    <Compile Include="DA_Tipo.cs" />
+    <Compile Include="DA_Ubigeo.cs" />
+    <Compile Include="DA_Usuario.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SROP.Entities\SROP.Entities.csproj">
+      <Project>{dfd8206f-4e06-45ca-b443-8f793fac4755}</Project>
+      <Name>SROP.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SROP.Session\SROP.Session.csproj">
+      <Project>{4e267d53-aba2-40b1-986e-6e517162828d}</Project>
+      <Name>SROP.Session</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilitario\Utilitario.csproj">
+      <Project>{2f7d617b-0795-4407-8709-e711fac94ae9}</Project>
+      <Name>Utilitario</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

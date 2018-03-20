@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SROP.Entities</name>
+    </assembly>
+    <members>
+        <member name="T:BE_PAGINA">
+             Project	 : BE
+             Class	 : BE_PAGINA
+            
+             -----------------------------------------------------------------------------
+             <summary>
+             
+             </summary>
+             <remarks>
+             </remarks>
+             <history>
+             	[Jonatan Abregu Chalco]	Created 07/06/2017
+             </history>
+        </member>
+        <member name="P:BE_PAGINA.IDAREA">
+            <summary>
+            
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:BE_PAGINA.NUORDEN">
+            <summary>
+            
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:BE_PAGINA.TXTITULOFLOTANTE">
+            <summary>
+            
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:BE_PAGINA.IDPAGINAPADRE">
+            <summary>
+            
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:BE_PAGINA.TXCONTROLADOR">
+            <summary>
+            
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:BE_PAGINA.TXACCION">
+            <summary>
+            
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:BE_PAGINA.IDPAGINA">
+            <summary>
+            
+            </summary>
+            <remarks>PRIMARY KEY</remarks>
+        </member>
+        <member name="P:BE_PAGINA.TXROL">
+            <summary>
+            
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:BE_PAGINA.TXTITULO">
+            <summary>
+            
+            </summary>
+            <remarks></remarks>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="XMLCaratulas" targetNamespace="http://tempuri.org/XMLCaratulas.xsd" elementFormDefault="qualified"
+	xmlns="http://tempuri.org/XMLCaratulas.xsd" xmlns:mstns="http://tempuri.org/XMLCaratulas.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Caratula">
+		<xs:complexType>
+			<xs:sequence>
+                <xs:element name="cod_op" type="xs:integer" />
+                <xs:element name="des_op" type="xs:string" />
+                <xs:element name="des_tipo_op" type="xs:string" />
+                <xs:element name="cod_tipo_op" type="xs:string" />
+                <xs:element name="logo" type="xs:base64Binary" />
+                <xs:element name="cod_ambito" type="xs:string" />
+                <xs:element name="des_ambito" type="xs:string" />
+                <xs:element name="region" type="xs:string" />
+                <xs:element name="provincia" type="xs:string" />
+                <xs:element name="distrito" type="xs:string" />
+                <xs:element name="des_observ" type="xs:string" />
+                <xs:element name="des_siglas" type="xs:string" />
+                <xs:element name="des_materia" type="xs:string" />
+                <xs:element name="cod_arc" type="xs:string" />
+                <xs:element name="num_vol" type="xs:integer" />
+                <xs:element name="tot_vol" type="xs:integer" />
+                <xs:element name="tot_vol_pla" type="xs:integer" />
+                <xs:element name="anno_padron" type="xs:string" />
+            </xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

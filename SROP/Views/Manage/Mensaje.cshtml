@@ -1,0 +1,43 @@
+﻿@model IEnumerable<BE_MENSAJE>
+@*EXITO = 1 - INFORMACION = 2 - ADVERTENCIA = 3 - PELIGRO = 4*@
+@foreach (BE_MENSAJE item in Model)
+{
+
+    if (item.IDTIPOMENSAJE == enumTipoMensaje.Exito)
+    {
+     <div class="alert alert-icon-left  alert-arrow-left alert-success alert-dismissible fade in mb-1" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+        <strong>¡Exito! </strong> @item.TXMENSAJE
+    </div>
+    }
+    else if (item.IDTIPOMENSAJE == enumTipoMensaje.Informacion)
+    {
+        <div class="alert alert-icon-left  alert-arrow-left alert-info alert-dismissible fade in mb-1" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+            <strong>¡Información! </strong> @item.TXMENSAJE
+        </div>
+    }
+    else if (item.IDTIPOMENSAJE  == enumTipoMensaje.Advertencia)
+    {
+        <div class="alert alert-icon-left  alert-arrow-left alert-warning alert-dismissible fade in mb-1" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+            <strong>¡Advertencia! </strong> @item.TXMENSAJE
+        </div>
+    }
+    else if (item.IDTIPOMENSAJE == enumTipoMensaje.Peligro)
+    {
+        <div class="alert alert-icon-left  alert-arrow-left alert-danger alert-dismissible fade in mb-1" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+            <strong>¡Peligro! </strong> @item.TXMENSAJE
+        </div>
+    }
+
+}

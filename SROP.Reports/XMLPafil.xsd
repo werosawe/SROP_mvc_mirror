@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="XMLPafil"
+    targetNamespace="http://tempuri.org/XMLPafil.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/XMLPafil.xsd"
+    xmlns:mstns="http://tempuri.org/XMLPafil.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Pafil">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="COD_OP" type="xs:integer" />
+                <xs:element name="DES_OP" type="xs:string" />
+                <xs:element name="NRO_ENTREGA" type="xs:integer" />
+                <xs:element name="AFIL_PRESENT" type="xs:integer" />
+                <xs:element name="AFIL_VAL" type="xs:integer" />                
+                <xs:element name="FEC_PRESENT" type="xs:date" />
+                <xs:element name="FLG_CANCELATORIO" type="xs:integer" />
+                <xs:element name="TIPO_OP" type="xs:string" />
+                <xs:element name="REGION" type="xs:string" />
+                <xs:element name="PROVINCIA" type="xs:string" />
+                <xs:element name="DISTRITO" type="xs:string" />
+                <xs:element name="COD_TIPO_OP" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

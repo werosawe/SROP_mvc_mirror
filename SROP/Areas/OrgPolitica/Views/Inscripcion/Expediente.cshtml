@@ -1,0 +1,303 @@
+﻿@model BE_OP
+@{
+    Layout = null;
+}
+<div class="card card-block">
+    @{
+        string Accion = "ExpedienteGraba";
+        if (Model.ESTADOPAGINA == enumEstadoPagina.Edicion) { Accion = "ExpedienteEdita"; }
+    }
+    <form class="form" id="frmExpediente" method='post' action='@Url.Action(Accion, "Inscripcion", new { area = "OrgPolitica" })'>
+        <div class="form-body">
+            <h4 class="form-section"><i class="icon-eye6"></i> Datos de la Organización Política</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Tipo_Libro">Libro</label>
+                        @Html.selectTipoLibro(x => x.Tipo_Libro, new { @class = "form-control", disabled = "disabled" }, null, true)
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="Nro_Tomo">Tomo</label>
+                        @Html.number(x => x.Nro_Tomo, new { @class = "form-control", @readonly = true }, null, false, false)
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="Nro_Partida">N° Partida: </label>
+                        @Html.number(x => x.Nro_Partida, new { @class = "form-control", @readonly = true }, null, false, false)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <label for="Des_OP">Denominación</label>
+                        @Html.textarea(x => x.Des_OP, new { @class = "form-control" }, null, false, true)
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="Des_Siglas">Sigla</label>
+                        @Html.text(x => x.Des_Siglas, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="Cod_Tipo_OP">Tipo</label>
+                            @Html.selectTipoOrganizacionPolitica(x => x.Cod_Tipo_OP, new { @class = "form-control", disabled = "disabled" }, null, true)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="Fec_Adq_Kit">Fecha adquición kit</label>
+                            @Html.date(x => x.Fec_Adq_Kit, new { @class = "form-control", @readonly = true }, null, true)
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="Fec_Ven_Kit">Fecha vencimiento kit</label>
+                            @Html.date(x => x.Fec_Ven_Kit, new { @class = "form-control", @readonly = true }, null, true)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            &nbsp;
+                            <label class="display-inline-block custom-control custom-checkbox">
+                                @Html.checkbox(x => x.FLCANDADO, new { @class = "custom-control-input" })
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">No modificar expediente</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            &nbsp;
+                            <label class="display-inline-block custom-control custom-checkbox">
+                                @Html.checkbox(x => x.FLMIEMBRODEALIANZA, new { @class = "custom-control-input", disabled = "disabled" })
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">Es miembro de alianza</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                @{
+                    BL_TipoOP b = new BL_TipoOP();
+                    BE_TipoOP i = new BE_TipoOP();
+                    int FLSIMBOLO = 0;
+                    try
+                    {
+                        i.Cod_Tipo_OP = Model.Cod_Tipo_OP;
+                        i = b.Get(i);
+                        if (i != null) { FLSIMBOLO = (int)i.FLSIMBOLO; }
+                    }
+                    catch (Exception ex) { throw ex; }
+                    finally { b.Dispose(); b = null; }
+
+                }
+                @if (FLSIMBOLO == 1)
+                {
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="Cod_Tipo_Op">Simbolo</label>
+                            <figure class="card border-white" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">
+                                <img style='width:300px;height:300px;' data-url='@Url.Action("GetSimbolo", "Inscripcion", new {area = "OrgPolitica", Cod_OP = Model.Cod_OP })' data-url-tmp='@Url.Action("GetImageTmp", "Manage", new {area = System.DBNull.Value})' id="imgSimbolo" class="gallery-thumbnail card-img-top" src='@Url.Action("GetSimbolo", "Inscripcion", new { area = "OrgPolitica", Cod_OP = Model.Cod_OP })' itemprop="thumbnail" alt='Simbolo' />
+                                @Html.text(x => x.TXARCHIVONOMBRE, new { @class = "text-invisible", @readonly = "readonly" }, null, false, true)
+                            </figure>
+                            @{
+                                FileUpLoad File = new FileUpLoad()
+                                {
+                                    multiple = 0,
+                                    TIPOARCHIVODOCUMENTO = TIPOTABLA.TIPOARCHIVODOCUMENTO.Simbolo,
+                                    ENVIARA = TIPOTABLA.ENVIARA.CarpetaTemporal,
+                                    TerminateFunction = "CargarSimboloTmp"
+                                };
+                                Html.RenderAction("ClientUpload", "Manage", new { area = System.DBNull.Value, c = File });
+                            }
+
+                        </div>
+                    </div>
+                }
+            </div>
+            <h4 class="form-section"><i class="icon-mail6"></i> Ambito de la Organización</h4>
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="Cod_Ambito">Ambito</label>
+                        @if (Model.Cod_Tipo_OP != "05")
+                        {
+
+                            @Html.selectAmbito(x => x.Cod_Ambito, new { @class = "form-control", disabled = "disabled" }, null, true)
+
+                        }
+                        else
+                        {
+                            @Html.selectAmbito(x => x.Cod_Ambito, new { @class = "form-control" }, null, true)
+                        }
+                    </div>
+                </div>
+                <div class="col-md-3" id="divRegion">
+                    <div class="form-group">
+                        <label for="UBIREGION">Departamento</label>                        
+                        @Html.selectDepartamento(x => x.UBIREGION, new { @class = "form-control", data_url = Url.Action("GetsProvincia", "api/UbigeoApi", new { area = DBNull.Value }) }, null, true)
+                    </div>
+                </div>
+                <div class="col-md-3" id="divProvincia">
+
+                    <div class="form-group">
+                        <label for="UBIPROVINCIA">Provincia</label>
+                        @Html.selectProvincia(x => x.UBIPROVINCIA, new { @class = "form-control", data_url = Url.Action("GetsDistrito", "api/UbigeoApi", new { area = DBNull.Value }) }, new { UBIREGION = Model.UBIREGION }, true)
+                    </div>
+                </div>
+                <div class="col-md-4" id="divDistrito">
+                    <div class="form-group">
+                        <label for="UBIDISTRITO">Distrito</label>
+                        @Html.selectDistrito(x => x.UBIDISTRITO, new { @class = "form-control" }, new { UBIREGION = Model.UBIREGION, UBIPROVINCIA = Model.UBIPROVINCIA }, true)
+                    </div>
+                </div>
+            </div>
+            <h4 class="form-section"><i class="icon-mail6"></i> Domicilio legal</h4>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="UBIREGIONDOMLEGAL">Departamento</label>
+                        @Html.selectDepartamento(x => x.UBIREGIONDOMLEGAL, new { @class = "form-control", data_url = Url.Action("GetsProvincia", "api/UbigeoApi", new { area = DBNull.Value }) }, null, true)
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="UBIPROVINCIADOMLEGAL">Provincia</label>
+                        @Html.selectProvincia(x => x.UBIPROVINCIADOMLEGAL, new { @class = "form-control", data_url = Url.Action("GetsDistrito", "api/UbigeoApi", new { area = DBNull.Value }) }, new { UBIREGION = Model.UBIREGIONDOMLEGAL }, true)
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="UBIDISTRITODOMLEGAL">Distrito</label>
+                        @Html.selectDistrito(x => x.UBIDISTRITODOMLEGAL, new { @class = "form-control" }, new { UBIREGION = Model.UBIREGIONDOMLEGAL, UBIPROVINCIA = Model.UBIPROVINCIADOMLEGAL }, true)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="IDDOMZONA">Tipo de zona</label>
+                        @Html.selectTipoZona(x => x.DOMIDZONA, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <label for="TXDOMZONA">Nombre de la zona</label>
+                        @Html.text(x => x.DOMTXZONA, new { @class = "form-control" })
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="IDDOMVIA">Tipo de Vía</label>
+                        @Html.selectTipoVia(x => x.DOMIDVIA, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <label for="TXDOMVIA">Nombre de la Vía</label>
+                        @Html.text(x => x.DOMTXVIA, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="TXDOMNUMERO">Número</label>
+                        @Html.text(x => x.DOMTXNUMERO, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="TXDOMKILOMETRO">Kilometro</label>
+                        @Html.text(x => x.DOMTXKILOMETRO, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="TXDOMMANZANA">Manzana</label>
+                        @Html.text(x => x.DOMTXMANZANA, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="TXDOMLOTE">Lote</label>
+                        @Html.text(x => x.DOMTXLOTE, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="TXDOMDEPARTAMENTO">Dpto.</label>
+                        @Html.text(x => x.DOMTXDEPARTAMENTO, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="TXDOMINTERIOR">Interior</label>
+                        @Html.text(x => x.DOMTXINTERIOR, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="TXDOMREFERENCIA">Otras referencias</label>
+                        @Html.textarea(x => x.DOMTXREFERENCIA, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <h4 class="form-section"><i class="icon-android-contact"></i> Contacto</h4>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="Des_Telef_Op_01">Télefono fijo</label>
+                        @Html.tel(x => x.Des_Telef_Op_01, new { @class = "form-control" }, null, false, true)
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="Des_Telef_Op_02">Télefono celular</label>
+                        @Html.tel(x => x.Des_Telef_Op_02, new { @class = "form-control" }, null, false, true)
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="Des_Correo_Op">E-mail</label>
+                        @Html.email(x => x.Des_Correo_Op, new { @class = "form-control" }, null, false, true)
+                    </div>
+                </div>
+            </div>
+            <h4 class="form-section"><i class="icon-document-text"></i> Otros</h4>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="Observaciones">Observación</label>
+                        @Html.textarea(x => x.Observaciones, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        @Html.hidden(x => x.ESTADOPAGINA)
+        <div class="form-actions right">
+            <button type="submit" id="btnGraba" class="btn btn-primary">
+                <i class="icon-save"></i> Grabar
+            </button>
+            <button type="button" class="btn btn-secondary">
+                <i class="icon-institution"></i> Alianza
+            </button>
+            <button type="button" class="btn btn-warning mr-1">
+                <i class="icon-sign-out"></i> Cancelar
+            </button>
+
+        </div>
+    </form>
+</div>
+

@@ -1,0 +1,148 @@
+﻿@model BE_OP  
+@{
+    ViewBag.Title = "Nuevo Expediente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Model.Cod_OP > 0) { 
+<div class="content-header row">
+    <div class="content-header-left col-md-6 col-xs-12">
+        <h2 class="content-header-title mb-0">@Model.Des_OP</h2>
+        @*<p class="text-muted mb-0">Partido político</p>*@
+    </div>
+    <div class="content-header-right col-md-6 col-xs-12">
+        <div role="group" aria-label="Button group with nested dropdown" class="btn-group float-md-right">
+            <div role="group" class="btn-group">
+                <button id="btnGroupDrop1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-outline-primary dropdown-toggle dropdown-menu-right"><i class="icon-cog3 icon-left"></i> Expediente</button>
+                <div aria-labelledby="btnGroupDrop1" class="dropdown-menu">
+                    <a href="component-buttons-extended.html" class="dropdown-item">Expediente digital</a>
+                    <a href="component-buttons-extended.html" class="dropdown-item">Constancia</a>
+                    <a href="component-buttons-extended.html" class="dropdown-item">Vincular</a>
+                    <a href="component-buttons-extended.html" class="dropdown-item">Requisitos</a>
+                    <a href="component-buttons-extended.html" class="dropdown-item">Asignar abogado</a>
+                </div>
+            </div>
+            @if ((int) Model.FLCANDADO == 1)
+            {
+                <a href="#" class="btn btn-outline-primary" title="Bloqueado"> <i class="icon-lock"></i></a>
+            }
+            else
+            {
+                <a href="#" class="btn btn-outline-primary" title="Desbloqueado"> <i class="icon-unlock"></i></a>
+            }
+        </div>
+    </div>
+    <div class="content-header-lead col-xs-12 mt-0">
+        <div class="form form-horizontal form-bordered">
+            <div class="form-body">
+                <div class="row">
+                    <div class="form-group col-md-2 mb-0">
+                        <label class="text-muted mb-0" for="Cod_OP">Codigo</label>
+                        @Html.p(x => x.Cod_OP, new { @class = "form-control-static" })
+                    </div>
+                    <div class="form-group col-md-4  mb-0">
+                        <label class="text-muted mb-0" for="Des_Tipo_Op">Tipo</label>
+                        @Html.p(x => x.Des_Tipo_Op, new { @class = "form-control-static" })
+                    </div>
+                    <div class="form-group col-md-3 mb-0">
+                        <label class="text-muted mb-0" for="Ubigeo_OP">UBIGEO</label>
+                        @Html.p(x => x.Ubigeo_OP, new { @class = "form-control-static" })
+                    </div>
+                    <div class="form-group col-md-3 mb-0">
+                        <label class="text-muted mb-0" for="Estado_Insc">Etapa</label>
+                        @Html.p(x => x.Estado_Insc, new { @class = "form-control-static" })
+                    </div>
+                </div>
+            </div>
+    </div>
+        @*<p class="lead">Esta organización se encuentra en estado <mark>Inscrito</mark>, y esta asignado al usuario <mark>Pepe XXXxxx</mark>, tiene como codigo el <mark>023112</mark></p>*@
+    </div>
+</div>
+<ul id="tabOrgPolitica" class="nav nav-tabs nav-top-border no-hover-bg nav-justified" role="tablist">
+    <li class="nav-item" role="presentation">
+        <a class="nav-link active" data-toggle="tab" href='@Url.Action("Expediente","Inscripcion", new { area = "OrgPolitica" } )' role="tab" id="tabExpediente" data-target="#Expediente" aria-controls="Expediente" aria-expanded="true">Expediente</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" data-toggle="tab" href='@Url.Action("Index","Etapa", new { area = "OrgPolitica" } )' role="tab" id="tabEtapas" data-target="#Etapas" aria-controls="Etapas">Etapas</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" data-toggle="tab" href="@Url.Action("Mantenimiento","Sintesis", new { area = "OrgPolitica" } )" role="tab" id="tabSintesis" data-target="#Sintesis" aria-controls="Sintesis">Sintesis</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" data-toggle="tab"  href="@Url.Action("Index","Estatuto", new { area = "OrgPolitica" } )" role="tab" id="tabEstatuto" data-target="#Estatuto" aria-controls="Estatuto">Estatuto</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" data-toggle="tab" href="@Url.Action("Index","Resolucion", new { area = "OrgPolitica" } )" role="tab" id="tabResoluciones" data-target="#Resoluciones" aria-controls="Resoluciones">Resoluciones</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" data-toggle="tab" href="@Url.Action("Index","Asiento", new { area = "OrgPolitica" } )" role="tab" id="tabAsiento" data-target="#Asiento" aria-controls="Asiento">Asiento</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" data-toggle="tab" href="@Url.Action("Index","ModPartida", new { area = "OrgPolitica" } )" role="tab" id="tabModificacionPartida" data-target="#ModificacionPartida" aria-controls="ModificacionPartida">Modificación de partída</a>
+    </li>
+</ul>
+}
+@Html.hidden(x => x.Cod_OP, new { @class = "form-control" })
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane show active" id="Expediente"  aria-labelledby='tabExpediente'>1</div>
+    <div role = "tabpanel" class="tab-pane" id="Etapas" aria-labelledby='tabEtapas'>2</div>
+    <div role = "tabpanel" class="tab-pane" id="Sintesis" aria-labelledby='tabSintesis'>3</div>
+    <div role = "tabpanel" class="tab-pane" id="Estatuto" aria-labelledby='tabEstatuto'>4</div>
+    <div role = "tabpanel" class="tab-pane" id="Resoluciones" aria-labelledby='tabResoluciones'>5</div>
+    <div role = "tabpanel" class="tab-pane" id="Asiento" aria-labelledby='tabAsiento'>6</div>
+    <div role = "tabpanel" class="tab-pane" id="ModificacionPartida" aria-labelledby='tabModificacionPartida'>7</div>
+</div>
+
+@section scripts
+     {
+    @*<script src="~/wwwroot/js/tabMenu.js" type="text/javascript"></script>*@
+    <script type="text/javascript">
+
+      
+        var Cod_OP = toInt(@Model.Cod_OP);
+        var Fec_Adq_Kit = '@Model.Fec_Adq_Kit';
+        var Fec_Ven_Kit = '@Model.Fec_Ven_Kit';
+        var Cod_Tipo_Op = '@Model.Cod_Tipo_OP';
+        var Tipo_Libro = '@Model.Tipo_Libro';
+        var Cod_Ambito = '@Model.Cod_Ambito';
+
+        $(function () {
+            $('#Expediente').load('@Url.Action("Expediente","Inscripcion", new { area = "OrgPolitica" } )', { "Cod_OP": Cod_OP, "Fec_Adq_Kit": Fec_Adq_Kit, "Fec_Ven_Kit": Fec_Ven_Kit, "Cod_Tipo_Op": Cod_Tipo_Op, "Tipo_Libro": Tipo_Libro, "Cod_Ambito": Cod_Ambito }, function (result) {
+                if ($('#tabExpediente') != undefined) { $('#tabExpediente').tab('show'); }
+            });
+        });
+
+
+        $('#tabOrgPolitica a').click(function (e) {
+            e.preventDefault()
+            var url = $(this).attr("href"); // the remote url for content
+            var target = $(this).data("target"); // the target pane
+            var tab = $(this); // this tab
+            // ajax load from data-url
+            $(target).load(url, { "Cod_OP": Cod_OP }, function (result) {
+                tab.tab('show');
+                pEliminaControl();
+            });
+        });
+
+        //$('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+        //    //var url = $(this).attr("href"); // the remote url for content
+        //    //var target = $(this).data("target"); // the target pane
+        //    //var tab = $(this); // this tab
+        //    //// ajax load from data-url
+        //    //$(target).load(url, function (result) {
+        //    //    tab.tab('show');
+        //    //    pEliminaControl();
+        //    //});
+        //});
+
+
+
+     
+
+        // initially activate the first tab..
+        ////$('#Expediente').tab('show');
+
+    </script>
+}
+
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="XMLOP_Elecc" targetNamespace="http://tempuri.org/XMLOP_Elecc.xsd" elementFormDefault="qualified"
+	xmlns="http://tempuri.org/XMLOP_Elecc.xsd" xmlns:mstns="http://tempuri.org/XMLOP_Elecc.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="OP_Elecc">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="cod_op" type="xs:integer" />
+				<xs:element name="des_op" type="xs:string" />
+				<xs:element name="des_tipo_op" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,148 @@
+﻿@model BE_BusquedaOP  
+@{
+    ViewBag.Title = "Busqueda de Organización Política";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="search-website" class="card overflow-hidden">
+    <div class="card-header">
+        <h4 class="card-title">Buscar Organización Política</h4>
+        <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+        <div class="heading-elements">
+            <ul class="list-inline mb-0">
+                <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+                <li><a data-action="reload"><i class="icon-reload"></i></a></li>
+                <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                <li><a data-action="close"><i class="icon-cross2"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="card-body collapse in">
+        <div class="card-block">
+            <form class="form" id="Index">
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    @Html.selectAbogado(x => x.ID_Asistente, new { @class = "form-control" }, null, false, "Seleccionar abogado")
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    @Html.selectTipoOrganizacionPolitica(x => x.Cod_Tipo_OP, new { @class = "form-control" },null,false,"Seleccionar tipo de Organización")
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <div class="position-relative has-icon-rigth">
+                                @Html.text(x => x.Des_OP, new { @class = "form-control form-control-lg input-lg upper-case" },null,true)
+                                <div class="form-control-position">
+                                    <i class="icon-microphone2 font-medium-4"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    @Html.selectEstadoOP(x => x.ID_EstadoOP, new { @class = "form-control" }, null, false, "Seleccionar estado de Organización")
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group row">
+                                <div class="col-md-3"><label>Fechas estado inscripción .. del</label></div>
+                                 <div class="col-md-4">
+                                        
+                                        @Html.date(x => x.FEINICIAL, new { @class = "form-control" }, null, true)
+                                    </div>
+                                <div class="col-md-1"><label>al</label></div>
+                                    <div class="col-md-4">
+                                        @Html.date(x => x.FEFINAL, new { @class = "form-control" }, null, true)
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions center">
+                    <button type="button" id="btnBusca" class="btn btn-primary">
+                        <i class="icon-search"></i> Buscar
+                    </button>
+                    <button type="button" onclick="location.href='@Url.Action("Nuevo","Inscripcion", new { Area = "OrgPolitica" })'" class="btn btn-success">
+                        <i class="icon-plus3"></i> Nuevo expediente
+                    </button>
+
+                </div>
+            </form>
+        </div>
+        <!--Search Result-->
+
+
+        <div id="divOrganizacionPolitica" class="card-block"></div>
+
+    
+    </div>
+</section>
+
+@section scripts {
+    <script type="text/javascript">
+        $('#btnBusca').click(pCargaOrganizacionPolitica);
+
+        function pCargaOrganizacionPolitica(param) {
+            $("#divOrganizacionPolitica").empty();
+            var uri = '@Url.Action("OrganizacionPoliticaLista", "Busca", new { area= "OrgPolitica" })';
+            var criterio = param + '&' + $('#Index').serialize();
+            $.ajax({
+                url: uri,
+                type: 'GET',
+                cache: false,
+                data: criterio,
+                success: function (data) {
+                    $("#divOrganizacionPolitica").html(data);
+                },
+                complete: function () {
+                    $('#tblOrganizacionPolitica').tablaFuncional({ funcion: 'pCargaOrganizacionPolitica', data: param });
+                    $('[data-toggle="bloqueo"]').confirmar({ funcion:'ConfirmaBloqueo'});
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('oops, something bad happened');
+                }
+            });
+        }
+                    
+
+        function ConfirmaBloqueo(data) {
+            $.ajax({
+                url: '@Url.Action("Bloqueo", "api/ExpedienteApi", new { area= "OrgPolitica" })',
+                dataType: "json",
+                type: 'POST',
+                cache: false,
+                data: data,
+                success: function (data) {
+                    MostrarMensaje(data.Message);
+                },
+                complete: function () {
+                    pCargaOrganizacionPolitica();
+                    $('[data-toggle="bloqueo"]').confirmar({ funcion: 'ConfirmaBloqueo' });
+                }
+            });
+
+        }
+
+
+        $('#Des_OP').keypress(function (e) {
+            var key = e.which;
+            if (key == 13)  // the enter key code
+            {
+                pCargaOrganizacionPolitica();
+                return false;
+            }
+        });
+    </script>
+}

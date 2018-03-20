@@ -1,0 +1,103 @@
+﻿@model BE_Asiento
+<div class="card card-block">
+    <form class="form form-horizontal">
+        <div class="form-body">
+            <div class="row mb-0">
+                <div class="col-md-5">
+                    <div class="form-group row  mb-0">
+                        <label class="col-md-2 label-control" for="Cod_Tipo_Asiento">Tipo</label>
+                        <div class="col-md-10">
+                            @Html.selectTipoAsiento(x => x.Cod_Tipo_Asiento, new { @class = "form-control" })                          
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group row  mb-0">
+                        <label class="col-md-5 label-control" for="txtFeAsientoIni">Fecha Asiento: del</label>
+                        <div class="col-md-7">
+                            <input type="date" id="txtFeAsientoIni" class="form-control input-sm" name="txtFeAsientoIni">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group row  mb-0">
+                        <label class="col-md-3 label-control" for="txtFeAsientoFin">al</label>
+                        <div class="col-md-9">
+                            <input type="date" id="txtFeAsientoFin" class="form-control input-sm" name="txtFeAsientoFin">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-actions right mb-0">
+            <button data-toggle="modal" data-target="#WinComun" type="button" id="btnNuevoAsiento" class="btn btn-success btn-sm" data-codigo='{"Cod_Correlativo":0, "Cod_OP": @Model.Cod_OP, "ESTADOPAGINA": "@enumEstadoPagina.Nuevo" }'>
+                <i class="icon-plus3"></i> Nuevo Asiento
+            </button>
+        </div>
+    </form>
+    <div id="divAsiento" class="card-block"></div>
+</div>
+<script type="text/javascript">
+
+    function pCargaAsiento(param) {
+        $("#divAsiento").empty();
+        var criterio = param + '&' + $.param({ 'Cod_OP': @Model.Cod_OP });
+        $.ajax({
+            url: '@Url.Action("AsientoLista", "Asiento", new { area= "OrgPolitica" })',
+            type: 'GET',
+            cache: false,
+            async: true,
+            data: criterio,
+            success: function (data) {
+                $("#divAsiento").html(data);
+            },
+            complete: function () {
+                $('#tblAsiento').tablaFuncional({ funcion: 'pCargaAsiento', data: param });
+                $('[data-toggle="elimina-asiento"]').confirmar({ funcion: 'ConfirmaEliminaAsiento' });
+                $(".edita-asiento").click(pMantenimientoAsiento);
+            }
+        });
+    }
+
+    $(function () {
+        $("#btnNuevoAsiento").click(pMantenimientoAsiento);
+        pCargaAsiento();
+    });
+
+    pMantenimientoAsiento = function () {
+        $("#WinComunContenido").empty();
+            var codigo = $(this).data("codigo");
+            $.ajax({
+                url: '@Url.Action("Mantenimiento","Asiento", new { area = "OrgPolitica" } )',
+                type: 'Get',
+                cache: false,
+                data: codigo,
+                success: function (data) {
+                    $("#WinComunContenido").append(data);
+                    $("#WinComunTitulo").text('Mantenimiento de Asiento');
+                    $('#WinComun').modal({ backdrop: 'static' })
+                },
+            });
+        }
+
+        function ConfirmaEliminaAsiento(data) {
+            $.ajax({
+                url: '@Url.Action("Elimina", "api/AsientoApi", new { area= "OrgPolitica" })',
+                dataType: "json",
+                type: 'POST',
+                cache: false,
+                data: data,
+                success: function (data) {
+                    MostrarMensaje(data.Message);
+                },
+                complete: function () {
+                    pCargaEtapas();
+                    $('[data-toggle="elimina-asiento"]').confirmar({ funcion: 'ConfirmaEliminaAsiento' });
+                    $(".edita-asiento").click(pMantenimientoAsiento);
+                }
+            });
+        }
+
+
+
+</script>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="XMLMovim_OP" targetNamespace="http://tempuri.org/XMLMovim_OP.xsd" elementFormDefault="qualified"
+	xmlns="http://tempuri.org/XMLMovim_OP.xsd" xmlns:mstns="http://tempuri.org/XMLMovim_OP.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Movim_OP">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="cod_correlativo" type="xs:integer" />
+				<xs:element name="des_tipo_movim" type="xs:string" />
+				<xs:element name="des_estado_inscrip" type="xs:string" />
+				<xs:element name="fec_movim" type="xs:date" />
+				<xs:element name="des_Ente" type="xs:string" />
+				<xs:element name="des_observ" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

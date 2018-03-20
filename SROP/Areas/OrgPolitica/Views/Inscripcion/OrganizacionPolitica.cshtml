@@ -1,0 +1,156 @@
+﻿@model BE_OP  
+@{
+    ViewBag.Title = "Nuevo Expediente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Model.ESTADOPAGINA == enumEstadoPagina.Edicion)
+{
+<div class="content-header row">
+    <div class="content-header-left col-md-6 col-xs-12">
+        <h2 class="content-header-title mb-0">@Model.Des_OP</h2>
+        @if (Model.Cod_Tipo_OP == "01")
+        {<p class="text-muted mb-0">@Model.Des_Tipo_Op</p> }
+        else if (Model.Cod_Tipo_OP == "02")
+        { <p class="text-muted mb-0">@string.Concat(Model.Des_Tipo_Op, " para la región de ", Model.Region)</p>}
+        else if (Model.Cod_Tipo_OP == "03")
+        { <p class="text-muted mb-0">@string.Concat(Model.Des_Tipo_Op, " para la provincia de ", Model.Provincia, " región de ", Model.Region)</p>}
+        else if (Model.Cod_Tipo_OP == "04")
+        { <p class="text-muted mb-0">@string.Concat(Model.Des_Tipo_Op, " para el distrito de ", Model.Distrito, ", provincia de ", Model.Provincia, " región de ", Model.Region)</p>}
+        else if (Model.Cod_Tipo_OP == "05")
+        { <p class="text-muted mb-0">@string.Concat(Model.Des_Tipo_Op, (Model.UBIREGION.NoNulo() ? " para la región de " + Model.Region : null))</p>}
+    </div>
+    <div class="content-header-right col-md-6 col-xs-12">
+        <div role="group" aria-label="Button group with nested dropdown" class="btn-group float-md-right">
+            <div role="group" class="btn-group">
+                <button id="btnGroupDrop1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-outline-primary dropdown-toggle dropdown-menu-right"><i class="icon-cog3 icon-left"></i> Expediente</button>
+                <div aria-labelledby="btnGroupDrop1" class="dropdown-menu">
+                    <a href="component-buttons-extended.html" class="dropdown-item">Expediente digital</a>
+                    <a href="component-buttons-extended.html" class="dropdown-item">Constancia</a>
+                    <a href="component-buttons-extended.html" class="dropdown-item">Vincular</a>
+                    <a href="component-buttons-extended.html" class="dropdown-item">Requisitos</a>
+                    <a href="component-buttons-extended.html" class="dropdown-item">Asignar abogado</a>
+                </div>
+            </div>
+            <a href="#" class="btn btn-outline-primary" title="Bloqueado"><i class="icon-locked"></i></a>
+        </div>
+    </div>
+    <div class="content-header-lead col-xs-12 mt-0">
+    <p class="lead">Esta organización se encuentra en estado <mark>@Model.Des_Estado_Inscrip</mark>, y está asignado al usuario <mark>@Model.Asistente</mark>, tiene como código: <mark class="font-large-1">@Model.Cod_OP</mark></p>
+    </div>
+</div>
+}
+
+<ul id="tabOrgPolitica" class="nav nav-tabs nav-top-border no-hover-bg nav-justified" role="tablist">
+    <li class="nav-item" role="presentation">                
+        <a class='@(Model.TABEXPEDIENTE == enumTabExpediente.Expediente ? "nav-link active" : "nav-link")' data-toggle='tab' href='@Url.Action("Expediente","Inscripcion", new { area = "OrgPolitica", ESTADOPAGINA = enumEstadoPagina.Edicion } )' role='tab' id='@string.Concat("tab", enumTabExpediente.Expediente)' data-target='@string.Concat("#", enumTabExpediente.Expediente)' aria-controls='@enumTabExpediente.Expediente' aria-expanded='true'>Expediente</a>
+    </li>
+   @if (Model.ESTADOPAGINA == enumEstadoPagina.Edicion)
+   {
+    <li class="nav-item" role="presentation">
+        <a  class='@(Model.TABEXPEDIENTE == enumTabExpediente.Etapa ? "nav-link active" : "nav-link")' data-toggle='tab' href='@Url.Action("Index", "Etapa", new { area = "OrgPolitica" })' role='tab' id='@string.Concat("tab", enumTabExpediente.Etapa)' data-target='@string.Concat("#", enumTabExpediente.Etapa)' aria-controls='@enumTabExpediente.Etapa' aria-expanded='true'>Etapas</a>
+    </li>
+
+    <li class="nav-item" role="presentation">
+        <a class='@(Model.TABEXPEDIENTE == enumTabExpediente.Sintesis ? "nav-link active active" : "nav-link")' data-toggle='tab' href='@Url.Action("Mantenimiento", "Sintesis", new { area = "OrgPolitica" })' role='tab' id='@string.Concat("tab", enumTabExpediente.Sintesis)' data-target='@string.Concat("#", enumTabExpediente.Sintesis)' aria-controls='@enumTabExpediente.Sintesis' aria-expanded='true'>Sintesis</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class='@(Model.TABEXPEDIENTE == enumTabExpediente.Estatuto ? "nav-link" : "nav-link")' data-toggle='tab' href='@Url.Action("Index", "Estatuto", new { area = "OrgPolitica" })' role='tab' id='@string.Concat("tab", enumTabExpediente.Estatuto)' data-target='@string.Concat("#", enumTabExpediente.Estatuto)' aria-controls='@enumTabExpediente.Estatuto' aria-expanded='true'>Estatuto</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class='@(Model.TABEXPEDIENTE == enumTabExpediente.Resolucion ? "nav-link active" : "nav-link")' data-toggle='tab' href='@Url.Action("Index", "Resolucion", new { area = "OrgPolitica" })' role='tab' id='@string.Concat("tab", enumTabExpediente.Resolucion)' data-target='@string.Concat("#", enumTabExpediente.Resolucion)' aria-controls='@enumTabExpediente.Resolucion' aria-expanded='true'>Resoluciones</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class='@(Model.TABEXPEDIENTE == enumTabExpediente.Asiento ? "nav-link active" : "nav-link")' data-toggle='tab' href='@Url.Action("Index", "Asiento", new { area = "OrgPolitica" })' role='tab' id='@string.Concat("tab", enumTabExpediente.Asiento)' data-target='@string.Concat("#", enumTabExpediente.Asiento)' aria-controls='@enumTabExpediente.Asiento' aria-expanded='true'>Asiento</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class='@(Model.TABEXPEDIENTE == enumTabExpediente.ModificacionPartida ? "nav-link active" : "nav-link")' data-toggle='tab' href='@Url.Action("Index", "ModPartida", new { area = "OrgPolitica" })' role='tab' id='@string.Concat("tab", enumTabExpediente.ModificacionPartida)' data-target='@string.Concat("#", enumTabExpediente.ModificacionPartida)' aria-controls='@enumTabExpediente.ModificacionPartida' aria-expanded='true'>Modificación partída</a>
+    </li>
+   }
+</ul>
+
+@Html.hidden(x => x.Cod_OP)
+<div class='tab-content' >
+    <div role='tabpanel' class='@(Model.TABEXPEDIENTE == enumTabExpediente.Expediente ? "tab-pane show active" : "tab-pane")' id='@enumTabExpediente.Expediente' aria-labelledby='@string.Concat("tab", enumTabExpediente.Expediente)'>
+         @if (Model.TABEXPEDIENTE == enumTabExpediente.Expediente) { Html.RenderAction("Expediente", "Inscripcion",new { area = "OrgPolitica", Cod_OP = Model.Cod_OP }); }
+      
+    </div>
+@if (Model.ESTADOPAGINA == enumEstadoPagina.Edicion)
+{
+    <div role='tabpanel' class='@(Model.TABEXPEDIENTE == enumTabExpediente.Etapa ? "tab-pane show active" : "tab-pane")' id='@enumTabExpediente.Etapa' aria-labelledby='@string.Concat("tab", enumTabExpediente.Etapa)'>
+        @if (Model.TABEXPEDIENTE == enumTabExpediente.Etapa) { Html.RenderAction("Index", "Etapa", new { area = "OrgPolitica", Cod_OP = Model.Cod_OP }); }
+    </div>
+    <div role='tabpanel' class='@(Model.TABEXPEDIENTE == enumTabExpediente.Sintesis ? "tab-pane show active" : "tab-pane")' id='@enumTabExpediente.Sintesis' aria-labelledby='@string.Concat("tab", enumTabExpediente.Sintesis)' >
+        @if (Model.TABEXPEDIENTE == enumTabExpediente.Sintesis) { Html.RenderAction("Mantenimiento", "Sintesis", new { area = "OrgPolitica", Cod_OP = Model.Cod_OP }); }
+    </div>
+    <div role='tabpanel' class='@(Model.TABEXPEDIENTE == enumTabExpediente.Estatuto ? "tab-pane show active" : "tab-pane")' id='@enumTabExpediente.Estatuto' aria-labelledby='@string.Concat("tab", enumTabExpediente.Estatuto)' >
+        @if (Model.TABEXPEDIENTE == enumTabExpediente.Estatuto) { Html.RenderAction("Index", "Estatuto", new { area = "OrgPolitica", Cod_OP = Model.Cod_OP }); }
+    </div>
+   <div role='tabpanel' class='@(Model.TABEXPEDIENTE == enumTabExpediente.Resolucion ? "tab-pane show active" : "tab-pane")' id='@enumTabExpediente.Resolucion' aria-labelledby='@string.Concat("tab", enumTabExpediente.Resolucion)' >
+        @if (Model.TABEXPEDIENTE == enumTabExpediente.Resolucion) { Html.RenderAction("Index", "Resolucion", new { area = "OrgPolitica", Cod_OP = Model.Cod_OP }); }
+   </div>
+   <div role='tabpanel' class='@(Model.TABEXPEDIENTE == enumTabExpediente.Asiento ? "tab-pane show active" : "tab-pane")' id='@enumTabExpediente.Asiento' aria-labelledby='@string.Concat("tab", enumTabExpediente.Asiento)' >
+        @if (Model.TABEXPEDIENTE == enumTabExpediente.Asiento) { Html.RenderAction("Index", "Asiento", new { area = "OrgPolitica", Cod_OP = Model.Cod_OP }); }
+   </div>
+   <div role='tabpanel' class='@(Model.TABEXPEDIENTE == enumTabExpediente.ModificacionPartida ? "tab-pane show active" : "tab-pane")' id='@enumTabExpediente.ModificacionPartida' aria-labelledby='@string.Concat("tab", enumTabExpediente.ModificacionPartida)' >
+        @if (Model.TABEXPEDIENTE == enumTabExpediente.ModificacionPartida) { Html.RenderAction("Index", "ModPartida", new { area = "OrgPolitica", Cod_OP = Model.Cod_OP }); }
+   </div>
+}
+</div>
+
+        @section scripts {
+          
+<script type="text/javascript">
+
+   // [EnumMember()] Ninguno = 0,
+   // [EnumMember()] Expediente = 1,
+   // [EnumMember()] Etapa = 2,
+   // [EnumMember()] Sintesis = 3,
+   // [EnumMember()] Estatuto = 4,
+   // [EnumMember()] Resolucion = 5,
+   // [EnumMember()] Asiento = 6,
+   // [EnumMember()] ModificacionPartida = 7
+   // [EnumMenber()] ModificacionPartida = 8
+
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            pCargaTabExpediente(this);
+        });
+
+    function pCargaTabExpediente(obj) {
+        var url = $(obj).attr("href"); // the remote url for content
+        var target = $(obj).data("target"); // the target pane
+        var tab = $(obj); // this tab
+        // ajax load from data-url
+        $(target).load(url, { "Cod_OP": @Model.Cod_OP }, function (result) {
+            tab.tab('show');
+            var TABEXPEDIENTE = $(tab).attr('aria-controls');
+            pCargaProcedimientos(TABEXPEDIENTE);
+        });
+    }
+
+    $(function () {
+        var tab = $("ul#tabOrgPolitica li a.active");
+        var TABEXPEDIENTE = $(tab).attr('aria-controls');
+        pCargaProcedimientos(TABEXPEDIENTE);
+    });
+
+    function pCargaProcedimientos(TABEXPEDIENTE) {
+
+        if (TABEXPEDIENTE == '@enumTabExpediente.Expediente') {
+            var url = @Url.Content("~/") +'Scripts/Expediente.js';
+            $.getScript(url, function () {
+
+            });
+
+        }
+        if (TABEXPEDIENTE == '@enumTabExpediente.Etapa') { }
+        if (TABEXPEDIENTE == '@enumTabExpediente.Sintesis') { }
+        if (TABEXPEDIENTE == '@enumTabExpediente.Estatuto') { }
+        if (TABEXPEDIENTE == '@enumTabExpediente.Resolucion') { }
+        if (TABEXPEDIENTE == '@enumTabExpediente.Asiento') { }
+        if (TABEXPEDIENTE == '@enumTabExpediente.ModificacionPartida') { }
+    }
+
+</script>
+}
+
+

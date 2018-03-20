@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="XMLPersoneros" targetNamespace="http://tempuri.org/XMLPersoneros.xsd" elementFormDefault="qualified"
+	xmlns="http://tempuri.org/XMLPersoneros.xsd" xmlns:mstns="http://tempuri.org/XMLPersoneros.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Personeros">
+		<xs:complexType>
+			<xs:sequence>
+			    <xs:element name="COD_OP" type="xs:string" />
+				<xs:element name="DES_OP" type="xs:string" />
+				<xs:element name="DES_TIPO_OP" type="xs:string" />
+				<xs:element name="DES_ESTADO_INSCRIP" type="xs:string" />
+				<xs:element name="DES_REP" type="xs:string" />
+                <xs:element name="DES_CARGO" type="xs:string" />
+                <xs:element name="DESCARGO" type="xs:string" />
+				<xs:element name="COD_DNI" type="xs:string" />
+				<xs:element name="NOMBRES" type="xs:string" />				
+				<xs:element name="DES_MOTIVO" type="xs:string" />
+                <xs:element name="DESMOTIVO" type="xs:string" />
+				<xs:element name="FEC_BAJA" type="xs:string" />		
+				<xs:element name="COD_MOTIVO_BAJA" type="xs:string" />		
+				<xs:element name="ESAFILIADO" type="xs:integer" />
+                <xs:element name="FEC_CARGA" type="xs:string" />
+                <xs:element name="ASIENTO_CARGA" type="xs:string" />
+                <xs:element name="ASIENTO_BAJA" type="xs:string" />
+            </xs:sequence>
+		</xs:complexType>
+	</xs:element>
+    <xs:element name="Directivos_prox_fin">
+        <xs:complexType>
+            <xs:sequence>                                                
+                <xs:element name="cod_op" type="xs:integer" />
+                <xs:element name="cod_tipo_op" type="xs:string" />
+                <xs:element name="des_op" type="xs:string" />
+                <xs:element name="des_tipo_op" type="xs:string" />
+                <xs:element name="Abogado_OP" type="xs:string" />
+                <xs:element name="num_directivos" type="xs:integer" />                
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

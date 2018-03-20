@@ -1,0 +1,243 @@
+﻿@model BE_Sintesis
+<div class="card card-block">
+    <form class="form" id="frmSintesis">
+        <div class="form-actions top right">
+            <button type="button" id="btnObtenerDatos" class="btn btn-info">
+                <i class="icon-upload4"></i> Obtener datos
+            </button>
+        </div>
+        <div class="form-body">
+            <div class="row">
+                <div class="col-md-3" >
+                    <div class="form-group">
+                        <label for="tx_Siglas">Siglas de la Organización Política</label>
+                        @Html.text(x => x.tx_Siglas, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="Fec_Doc">Fecha de sintesis</label>
+                        @Html.date(x => x.Fec_Doc, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="Cod_Tipo_Op">Simbolo</label>
+                        <figure class="card border-grey border-lighten-2" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">
+                            <a href='@Url.Action("GetSimbolo", "Sintesis", new { area = "OrgPolitica", Cod_OP = ViewBag.Cod_OP })' itemprop="contentUrl" data-size="300x300">
+                                <img style='width:200px;height:200px;' id="imgSimboloSintesis" class="gallery-thumbnail card-img-top"  itemprop="thumbnail" alt='cargando simbolo...' />
+                            </a>
+                        </figure>
+                    </div>
+                </div>      
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <label for="Tx_SintesInsc">Síntesis de Inscripción</label>
+                        @Html.textarea( x => x.Tx_SintesInsc, new { @class = "form-control", @rows = "9" }, null, false, false, (string)ViewBag.ValorNuloSintesis)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+               
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="Tx_Fundadores">Nombres de los Fundadores</label>
+                        @Html.textarea(x => x.Tx_Fundadores, new { @class = "form-control", @rows = "6" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="Tx_Dirigentes">Dirigentes</label>
+                        @Html.textarea(x => x.Tx_Dirigentes, new { @class = "form-control", @rows = "6" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="Tx_Apoderados">Apoderados</label>
+                        @Html.textarea(x => x.Tx_Apoderados, new { @class = "form-control", @rows = "6" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="Tx_PersoLegal">Nombres de Personeros Legales</label>
+                        @Html.textarea(x => x.Tx_PersoLegal, new { @class = "form-control", @rows = "6" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="Tx_PersoTecni">Nombres de Personeros Técnicos</label>
+                        @Html.textarea(x => x.Tx_PersoTecni, new { @class = "form-control", @rows = "6" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="Tx_PersoLegal">Representante Legal</label>
+                        @Html.textarea(x => x.Tx_PersoLegal, new { @class = "form-control", @rows = "6" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="Tx_Tesorero">Tesorero</label>
+                        @Html.textarea(x => x.Tx_Tesorero, new { @class = "form-control", @rows = "6" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="Tx_Domiclegal">Domicilio Legal</label>
+                        @Html.textarea(x => x.Tx_Domiclegal, new { @class = "form-control", @rows = "6" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="Tx_ResumenEstatuto">Resumen del estatuto</label>
+                        @Html.textarea(x => x.Tx_ResumenEstatuto, new { @class = "form-control", @rows = "6" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions right">
+            <button type="button" id="btnGrabaSintesis" class="btn btn-primary">
+                <i class="icon-save"></i> Grabar
+            </button>
+            @{ if (Model != null)
+                {
+                    <button type="button" class="btn btn-secundary">
+                        <i class="icon-eye4"></i> Ver
+                    </button>
+                    <button type="button" id="btnEliminaSintesis" class="btn btn-danger">
+                        <i class="icon-remove"></i> Eliminar
+                    </button>
+                }
+            }
+
+        </div>
+    </form>
+
+
+
+</div>
+
+<script type="text/javascript">
+
+    var tabActual = $('#@string.Concat("tab", enumTabExpediente.Sintesis)');
+
+
+    $(function () {
+        //$(form).addHidden('Cod_OP', $('#Cod_OP').val());
+        var d = new Date();
+        $("#imgSimboloSintesis").attr("src", '@Url.Action("GetSimbolo", "Sintesis", new { area = "OrgPolitica", Cod_OP = ViewBag.Cod_OP })'+ '&d=' + d.getTime());
+
+        $("#btnObtenerDatos").bind("click", function () {
+            $.ajax({
+                url: '@Url.Action("GetDato", "api/SintesisApi", new { area=  DBNull.Value })',
+                type: "GET",
+                data: { "Cod_OP": $('#Cod_OP').val() },
+                contentType: "application/json;chartset=utf-8",
+                success: function (d) {
+                    if (d.success == true) {
+                        var Sintesis = d.data;
+
+                        $('#tx_Siglas').val(Sintesis.tx_Siglas);
+                        $('#Tx_Fundadores').val(Sintesis.Tx_Fundadores);
+                        $('#Tx_Dirigentes').val(Sintesis.Tx_Dirigentes);
+                        $('#Tx_Apoderados').val(Sintesis.Tx_Apoderados);
+                        $('#Tx_PersoLegal').val(Sintesis.Tx_PersoLegal);
+                        $('#Tx_PersoTecni').val(Sintesis.Tx_PersoTecni);
+                        $('#Tx_RepreLegal').val(Sintesis.Tx_RepreLegal);
+                        $('#Tx_Tesorero').val(Sintesis.Tx_Tesorero);
+                        $('#Tx_Domiclegal').val(Sintesis.Tx_Domiclegal);
+                        var d = new Date(); $('#imgSimboloSintesis').attr('src', '@Url.Action("GetSimbolo", "Inscripcion", new { area = "OrgPolitica", Cod_OP = ViewBag.Cod_OP })' + '&d=' + d.getTime());
+
+
+                       // $('#@string.Concat("tab", enumTabExpediente.Sintesis)').click();
+
+
+
+
+                    }
+                },
+            });
+        });
+
+
+
+
+
+
+        $("#frmSintesis").validate({
+            errorClass: "text-danger",
+            validClass: "text-success",
+            errorElement: "p",
+            ignoreTitle: true,
+            highlight: function (element) { $(element).addClass('border-danger'); },
+            unhighlight: function (element) { $(element).removeClass('border-danger'); }
+        });
+
+        $("#btnGrabaSintesis").click(function () {
+            if ($("#frmSintesis").valid()) {
+                var form = $("#frmSintesis");
+                $(form).addHidden('Cod_OP', $('#Cod_OP').val());
+                var Sintesis = $(form).serialize();
+                $.ajax({
+                    url: '@Url.Action("Graba", "api/SintesisApi", new { area= "OrgPolitica" })',
+                    dataType: "json",
+                    type: 'POST',
+                    cache: false,
+                    data: Sintesis,
+                    cache: false,
+                    success: function (d) {
+                        if(d.success==true){pCargaTabExpediente(tabActual);}
+                        MostrarMensaje(d.Message);
+                    }
+                });
+            }
+        });
+
+
+
+        $("#btnEliminaSintesis").click(function () {
+
+            var form = $("#frmSintesis");
+            $(form).addHidden('Cod_OP', $('#Cod_OP').val());
+            var Sintesis = $(form).serialize();
+            $.ajax({
+                url: '@Url.Action("Elimina", "api/SintesisApi", new { area= "OrgPolitica" })',
+                dataType: "json",
+                type: 'POST',
+                cache: false,
+                data: Sintesis,
+                cache: false,
+                success: function (d) {
+                      if(d.success==true){pCargaTabExpediente(tabActual);}
+                    MostrarMensaje(d.Message);
+                }
+            });
+
+        });
+
+
+
+    });
+
+
+
+</script>

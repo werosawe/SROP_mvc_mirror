@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SROP.DataAccess</name>
+    </assembly>
+    <members>
+        <member name="T:DA_PAGINA">
+             Project	 : DA
+             Class	 : DA_PAGINA
+            
+             -----------------------------------------------------------------------------
+             <summary>
+            
+             </summary>
+             <remarks>
+             </remarks>
+             <history>
+             	[Jonatan Abregu Chalco]	07/06/2017	Created
+             </history>
+        </member>
+        <member name="M:DA_PAGINA.ADD(BE_PAGINA)">
+            <summary>
+              Procedimiento de acceso a datos para agregar un registro
+            </summary>
+            <param name="c"></param>
+            <returns>int</returns>
+        </member>
+        <member name="M:DA_PAGINA.EDIT(Oracle.DataAccess.Client.OracleConnection,BE_PAGINA)">
+            <summary>
+              Procedimiento de Acceso a Datos para Editar el Registro
+            </summary>
+            <param name="cn"></param>
+            <param name="c"></param>
+        </member>
+        <member name="M:DA_PAGINA.EDIT_EST(BE_PAGINA)">
+            <summary>
+            Procedimiento de Acceso a Datos para cambiar de estado al Registro
+            </summary>
+            <param name="c"></param>
+        </member>
+        <member name="M:DA_PAGINA.DEL(BE_PAGINA)">
+            <summary>
+            Procedimiento de Acceso a Datos para eliminar un Registro
+            </summary>
+            <param name="c"></param>
+        </member>
+        <member name="M:DA_PAGINA.Gets(Oracle.DataAccess.Client.OracleConnection,BE_PAGINA)">
+            <summary>
+            Procedimiento de Acceso a Datos para listar todos lo registros
+            </summary>
+            <param name="c"></param>
+            <param name="cn"></param>
+            <returns>DataReader</returns>
+        </member>
+        <member name="M:DA_PAGINA.Get(Oracle.DataAccess.Client.OracleConnection,BE_PAGINA)">
+            <summary>
+            Procedimiento de Acceso a Datos para listar un registro por su Codigo Unico (Primary Key)
+            </summary>
+            <param name="c">Parametros con los criterios de busqueda</param>
+            <param name="cn"></param>
+            <returns>Retorna un registro (DataReader)</returns>
+        </member>
+    </members>
+</doc>

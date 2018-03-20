@@ -1,0 +1,120 @@
+﻿@model BE_OP  
+@{
+    ViewBag.Title = "Nueva Organización Política";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card card-block">
+    <form class='form' method='post' action='@Url.Action("OrganizacionPolitica", "Inscripcion", new { area = "OrgPolitica", Cod_OP = 0, TABEXPEDIENTE = (int)enumTabExpediente.Expediente,  ESTADOPAGINA = enumEstadoPagina.Nuevo })' id='frmNuevoExpediente' >
+        <div class="form-body">
+            <h4 class="form-section"><i class="icon-new-tab"></i> Nuevo Expediente</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Fec_Adq_Kit">Fecha de adquisición del KIT</label>
+                        @Html.date(x => x.Fec_Adq_Kit, new { @class = "form-control" }, null, false, true)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Fec_Ven_Kit">Fecha de vencimiento del KIT</label>
+                        @Html.date(x => x.Fec_Ven_Kit, new { @class = "form-control", @readonly = true }, null, false, true)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="Cod_Tipo_OP">Tipo de organización política</label>
+                        @Html.selectTipoOrganizacionPolitica(x => x.Cod_Tipo_OP, new { @class = "form-control" }, null, true, "Seleccionar tipo de Organización")
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="Cod_Tipo_Op">Documentos</label>
+                        <ol id="olDocumento" ></ol>
+                    </div>
+                </div>
+            </div>  
+            
+            <div class="row">
+                <div class="form-group col-md-12">
+                    &nbsp;
+                    <label class="display-inline-block custom-control custom-checkbox">
+                        <input type="checkbox" id="chkCumple" class="custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">Cumple todo</span>
+                    </label>
+                </div>
+            </div> 
+            @Html.hidden(x => x.Tipo_Libro)
+            @Html.hidden(x => x.Cod_Ambito)
+        </div>
+        <div class="form-actions center">
+            <button type="submit" id="btnSiguiente" disabled="disabled" class="btn btn-primary"><i class="icon-next2"></i> Siguiente</button>
+            <button type="button" class="btn btn-warning mr-1"><i class="icon-sign-out"></i> Cancelar</button>
+        </div>
+    </form>
+</div>
+@section scripts {
+<script type="text/javascript">
+
+
+    GetsDocumentos = function () {
+        var Cod_Tipo_OP = $(this).val();
+        $("#olDocumento").empty();
+        $.ajax({
+            url: '@Url.Action("Gets", "api/RequisitoApi", new { area=  DBNull.Value })',
+            type: "GET",
+            data: { "Cod_Tipo_OP": Cod_Tipo_OP },
+            contentType: "application/json;chartset=utf-8",
+            cache: false,
+            success: function (r) {
+                $.each(r.data, function (i, item) {
+                    $("#olDocumento").append('<li>' + item.Des_Req + '</li>');                   
+                });
+                $('#Tipo_Libro').val(r.data2.Tipo_Libro);
+                $('#Cod_Ambito').val(r.data2.Cod_Ambito);
+            },
+        });
+    }                                                                                                                                                                                             
+
+    pCalculaFechaVencimiento = function () {
+        var ss = $(this).fecha({TXFORMATOSALIDA:'yyyy-MM-dd', NUANNO:2});
+        $('#Fec_Ven_Kit').val(ss);
+    }
+    
+
+    $(function () {
+        $('#Cod_Tipo_OP').change(GetsDocumentos);
+        $('#Fec_Adq_Kit').change(pCalculaFechaVencimiento);
+
+        $("#chkCumple").change(function () {
+            if ($(this).is(":checked")) { $("#btnSiguiente").removeAttr("disabled"); } else { $('#btnSiguiente').prop('disabled', true); }
+        });
+
+        //$('#chkCumple').change(pCalculaFechaVencimiento);
+
+        $("#frmNuevoExpediente").validate({
+            errorClass: "text-danger",
+            validClass: "text-success",
+            errorElement: "p",
+            ignoreTitle: true,
+            highlight: function (element) {$(element).addClass('border-danger');},
+            unhighlight: function (element) {$(element).removeClass('border-danger');},
+            submitHandler: function (form) {
+
+                $(form).prmDisabled();
+               
+                return true;
+            }
+        });
+
+    });
+
+
+
+</script>
+    }

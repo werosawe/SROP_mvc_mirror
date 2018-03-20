@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="XML_Alianzas"
+    targetNamespace="http://tempuri.org/XML_Alianzas.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/XML_Alianzas.xsd"
+    xmlns:mstns="http://tempuri.org/XML_Alianzas.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="AlianzaElectoral">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cod_op" type="xs:integer" />
+                <xs:element name="des_op" type="xs:string" />
+                <xs:element name="logo" type="xs:base64Binary" />
+                <xs:element name="des_estado_op" type="xs:string" />
+                <xs:element name="num_resol" type="xs:string" />
+                <xs:element name="fec_resol" type="xs:date" />
+                <xs:element name="ambito" type="xs:string" />
+                <xs:element name="proceso_electoral" type="xs:string" />
+                <xs:element name="personero_legal" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="MiembrosAlianza">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cod_op" type="xs:integer" />
+                <xs:element name="cod_op_asoc" type="xs:integer" />
+                <xs:element name="des_op" type="xs:string" />
+                <xs:element name="cod_tipo_op" type="xs:string" />
+                <xs:element name="des_tipo_op" type="xs:string" />                                                
+                <xs:element name="region" type="xs:string" />
+                <xs:element name="logo" type="xs:base64Binary" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ProcesosElectorales">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cod_op" type="xs:integer" />
+                <xs:element name="txproceso" type="xs:string" />                
+                <xs:element name="cod_tipo_elecc" type="xs:string" />
+                <xs:element name="des_tipo_elecc" type="xs:string" />                
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ReporteAlianzas">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cod_op" type="xs:integer" />
+                <xs:element name="des_op" type="xs:string" />
+                <xs:element name="des_est_insc" type="xs:string" />
+                <xs:element name="des_tipo_elecc" type="xs:string" />
+                <xs:element name="cod_op_asoc" type="xs:integer" />
+                <xs:element name="des_op_asoc" type="xs:string" />
+                <xs:element name="cod_tipo_op_asoc" type="xs:string" />
+                <xs:element name="ano_elecc" type="xs:string" />
+                <xs:element name="region" type="xs:string" />
+                <xs:element name="provincia" type="xs:string" />
+                <xs:element name="distrito" type="xs:string" />                
+                <xs:element name="des_siglas" type="xs:string" />
+                <xs:element name="fec_movim" type="xs:date" />
+                <xs:element name="usuario" type="xs:string" />
+                <xs:element name="rol" type="xs:string" />
+                <xs:element name="txproceso" type="xs:string" />
+                <xs:element name="cod_estado_op" type="xs:string" />
+                <xs:element name="des_estado_op" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+</xs:schema>

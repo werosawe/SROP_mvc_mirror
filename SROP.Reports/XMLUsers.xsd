@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="XMLUsers"
+    targetNamespace="http://tempuri.org/XMLUsers.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/XMLUsers.xsd"
+    xmlns:mstns="http://tempuri.org/XMLUsers.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+    <xs:element name="Users">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="USERNAME" type="xs:string" />
+                <xs:element name="USERID" type="xs:string" />
+                <xs:element name="CLAVE" type="xs:string" />
+                <xs:element name="COD_ROL" type="xs:string" />
+                <xs:element name="DES_ROL" type="xs:string" />
+                <xs:element name="COD_OP" type="xs:string" />
+                <xs:element name="DES_OP" type="xs:string" />
+                <xs:element name="FECHA" type="xs:date" />
+                <xs:element name="HORA_LOGIN" type="xs:string" />
+                <xs:element name="HORA_LOGOUT" type="xs:string" />
+                <xs:element name="COD_ENTE" type="xs:string" />
+                <xs:element name="DES_ENTE" type="xs:string" />
+                <xs:element name="COD_AREA" type="xs:string" />
+                <xs:element name="DES_AREA" type="xs:string" />
+                <xs:element name="FG_ACTIVO" type="xs:integer" />
+                <xs:element name="FEC_VEN_CTA" type="xs:date" />
+                <xs:element name="COUNT" type="xs:integer" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+</xs:schema>

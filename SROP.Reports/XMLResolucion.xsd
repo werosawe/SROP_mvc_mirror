@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="XMLResolucion" targetNamespace="http://tempuri.org/XMLResolucion.xsd" elementFormDefault="qualified"
+	xmlns="http://tempuri.org/XMLResolucion.xsd" xmlns:mstns="http://tempuri.org/XMLResolucion.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Resolucion">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Des_Doc" type="xs:string" />
+				<xs:element name="Fec_Doc" type="xs:string"></xs:element>
+				<xs:element name="Texto" type="xs:string"></xs:element>
+                <xs:element name="FirmadoPor" type="xs:string" />
+                <xs:element name="CargoSede" type="xs:string" />				
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Sintesis">
+		<xs:complexType>
+			<xs:sequence>
+			    <xs:element name="cod_tipo_op" type="xs:string" />
+				<xs:element name="tx_sintesinsc" type="xs:string" />
+				<xs:element name="tx_simbolo" type="xs:string" />
+				<xs:element name="tx_desop" type="xs:string" />
+				<xs:element name="img_simbolo" type="xs:base64Binary" />                
+                <xs:element name="tx_procelec_alianza" type="xs:string" />
+				<xs:element name="tx_fundadores" type="xs:string" />
+				<xs:element name="tx_dirigentes" type="xs:string" />
+				<xs:element name="tx_apoderados" type="xs:string" />
+				<xs:element name="tx_persolegal" type="xs:string" />
+				<xs:element name="tx_persotecni" type="xs:string" />
+				<xs:element name="tx_reprelegal" type="xs:string" />
+                <xs:element name="tx_tesorero" type="xs:string" />
+				<xs:element name="tx_domiclegal" type="xs:string" />
+                <xs:element name="tx_resumenestatuto" type="xs:string" />
+				<xs:element name="fec_doc" type="xs:string" />	
+                <xs:element name="FirmadoPor" type="xs:string" />
+                <xs:element name="CargoSede" type="xs:string" />
+                <xs:element name="Ciudad" type="xs:string" />
+                <xs:element name="tx_siglas" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>  
+</xs:schema>

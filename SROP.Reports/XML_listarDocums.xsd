@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="XML_listarDocums" targetNamespace="http://tempuri.org/XML_listarDocums.xsd"
+	elementFormDefault="qualified" xmlns="http://tempuri.org/XML_listarDocums.xsd" xmlns:mstns="http://tempuri.org/XML_listarDocums.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="ListarDocums">
+		<xs:complexType>
+			<xs:sequence>
+                <xs:element name="year_resol" type="xs:string" />
+				<xs:element name="des_tipo_doc" type="xs:string" />
+				<xs:element name="des_doc" type="xs:string" />
+				<xs:element name="file_name" type="xs:string" />
+				<xs:element name="fec_doc" type="xs:date" />
+				<xs:element name="cod_op" type="xs:string" />
+				<xs:element name="des_op" type="xs:string" />
+				<xs:element name="cod_tipo_op" type="xs:string" />
+				<xs:element name="des_tipo_op" type="xs:string" />
+				<xs:element name="des_estado_inscrip" type="xs:string" />
+				<xs:element name="flg_visible" type="xs:integer" />
+				<xs:element name="url_resol_orop" type="xs:string" />
+				<xs:element name="x_user_crea" type="xs:string" />
+				<xs:element name="x_fecha_crea" type="xs:date" />
+				<xs:element name="des_sede" type="xs:string" />
+                <xs:element name="sumilla" type="xs:string" />
+                <xs:element name="siglas_tipo_op" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

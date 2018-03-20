@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion />
+    <SchemaVersion />
+    <ProjectGuid>{DFD8206F-4E06-45CA-B443-8F793FAC4755}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SROP.Entities</RootNamespace>
+    <AssemblyName>SROP.Entities</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <SccProjectName />
+    <SccLocalPath />
+    <SccAuxPath />
+    <SccProvider />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>SROP.Entities.xml</DocumentationFile>
+    <NoWarn>1591</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>SROP.Entities.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BE_Abogado.cs" />
+    <Compile Include="BE_ActaFundacion.cs" />
+    <Compile Include="BE_Adherente.cs" />
+    <Compile Include="BE_Afiliados.cs" />
+    <Compile Include="BE_Afil_ult4.cs" />
+    <Compile Include="BE_Alianza.cs" />
+    <Compile Include="BE_Ambito.cs" />
+    <Compile Include="BE_Archivo.cs" />
+    <Compile Include="BE_Area.cs" />
+    <Compile Include="BE_Asiento.cs" />
+    <Compile Include="BE_Auto.cs" />
+    <Compile Include="BE_BusquedaOP.cs" />
+    <Compile Include="BE_Cargo.cs" />
+    <Compile Include="BE_CargosOP.cs" />
+    <Compile Include="BE_Cargos_AltasBajas.cs" />
+    <Compile Include="BE_ComiteAfil.cs" />
+    <Compile Include="BE_ComiteEntrega.cs" />
+    <Compile Include="BE_ComiteLista.cs" />
+    <Compile Include="BE_ComiteMotBaja.cs" />
+    <Compile Include="BE_ComiteVF.cs" />
+    <Compile Include="BE_ComiteVF_Reniec.cs" />
+    <Compile Include="BE_Constancia.cs" />
+    <Compile Include="BE_ConstanciaAfil.cs" />
+    <Compile Include="BE_Directivo.cs" />
+    <Compile Include="BE_DocLegales.cs" />
+    <Compile Include="MTD\BE_Documento.cs" />
+    <Compile Include="MTD\BE_Expediente.cs" />
+    <Compile Include="BE_Ente.cs" />
+    <Compile Include="BE_EstadoAfil.cs" />
+    <Compile Include="BE_EstadoInsc.cs" />
+    <Compile Include="BE_EstadoOP.cs" />
+    <Compile Include="BE_Estatuto.cs" />
+    <Compile Include="BE_Etapa.cs" />
+    <Compile Include="BE_HistAfil.cs" />
+    <Compile Include="BE_Menu.cs" />
+    <Compile Include="BE_MotivoVin.cs" />
+    <Compile Include="BE_OP.cs" />
+    <Compile Include="BE_opPDF.cs" />
+    <Compile Include="BE_PadronAfil.cs" />
+    <Compile Include="BE_PAGINA.cs" />
+    <Compile Include="BE_Partida.cs" />
+    <Compile Include="BE_PartidaDetalle.cs" />
+    <Compile Include="BE_PartidaTarea.cs" />
+    <Compile Include="BE_PeriodosAfilAnt.cs" />
+    <Compile Include="BE_Persona.cs" />
+    <Compile Include="BE_Personero.cs" />
+    <Compile Include="BE_RenunciaEval.cs" />
+    <Compile Include="BE_Reportes.cs" />
+    <Compile Include="BE_Representantes.cs" />
+    <Compile Include="BE_ReqTipoOP.cs" />
+    <Compile Include="BE_Requisito.cs" />
+    <Compile Include="BE_Resolucion.cs" />
+    <Compile Include="BE_ResolucionDetalle.cs" />
+    <Compile Include="BE_ResulResol.cs" />
+    <Compile Include="BE_Roles.cs" />
+    <Compile Include="BE_Sede.cs" />
+    <Compile Include="BE_Sintesis.cs" />
+    <Compile Include="BE_Error.cs" />
+    <Compile Include="BE_TipoAsiento.cs" />
+    <Compile Include="BE_TipoBaja.cs" />
+    <Compile Include="BE_TipoCancel.cs" />
+    <Compile Include="BE_TipoMov.cs" />
+    <Compile Include="BE_Tipo.cs" />
+    <Compile Include="BE_TipoOP.cs" />
+    <Compile Include="BE_Ubigeo.cs" />
+    <Compile Include="BE_Usuario.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Utilitario\Utilitario.csproj">
+      <Project>{2f7d617b-0795-4407-8709-e711fac94ae9}</Project>
+      <Name>Utilitario</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

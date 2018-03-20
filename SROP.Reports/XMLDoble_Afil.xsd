@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="XMLDoble_Afil" targetNamespace="http://tempuri.org/XMLDoble_Afil.xsd" elementFormDefault="qualified"
+	xmlns="http://tempuri.org/XMLDoble_Afil.xsd" xmlns:mstns="http://tempuri.org/XMLDoble_Afil.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Doble_Afil">
+		<xs:complexType>
+			<xs:sequence>			
+				<xs:element name="cod_dni" type="xs:string" />			
+				<xs:element name="apepat" type="xs:string" />
+				<xs:element name="apemat" type="xs:string" />
+				<xs:element name="nombres" type="xs:string" />		
+				<xs:element name="isafiliado" type="xs:integer" />		
+				<xs:element name="cod_op" type="xs:integer" />
+				<xs:element name="des_op" type="xs:string" />
+				<xs:element name="des_tipo_op" type="xs:string" />
+				<xs:element name="des_estado_inscrip" type="xs:string" />
+				<xs:element name="fec_estado_insc" type="xs:date" />				
+				<xs:element name="ult_fec_solic" type="xs:date" />				
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

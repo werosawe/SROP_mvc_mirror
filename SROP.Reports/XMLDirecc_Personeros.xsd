@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="XMLDirecc_Personeros" targetNamespace="http://tempuri.org/XMLDirecc_Personeros.xsd"
+	elementFormDefault="qualified" xmlns="http://tempuri.org/XMLDirecc_Personeros.xsd" xmlns:mstns="http://tempuri.org/XMLDirecc_Personeros.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Direcc_Personeros">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="des_tipo_op" type="xs:string" />
+				<xs:element name="cod_op" type="xs:string" />
+				<xs:element name="des_op" type="xs:string" />
+				<xs:element name="des_estado_inscrip" type="xs:string" />
+				<xs:element name="direccion" type="xs:string" />
+				<xs:element name="telefono_1" type="xs:string" />
+				<xs:element name="telefono_2" type="xs:string" />
+				<xs:element name="region_direcc" type="xs:string" />
+				<xs:element name="provincia_direcc" type="xs:string" />
+				<xs:element name="distrito_direcc" type="xs:string" />
+				<xs:element name="des_correo_op" type="xs:string" />
+				<xs:element name="pag_web" type="xs:string" />
+				<xs:element name="cargo1" type="xs:string" />
+				<xs:element name="dni1" type="xs:string" />
+				<xs:element name="nombres1" type="xs:string" />
+				<xs:element name="cargo2" type="xs:string" />
+				<xs:element name="dni2" type="xs:string" />
+				<xs:element name="nombres2" type="xs:string" />
+				<xs:element name="cargo3" type="xs:string" />
+				<xs:element name="dni3" type="xs:string" />
+				<xs:element name="nombres3" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
