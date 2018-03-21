@@ -1,0 +1,3 @@
+Shortcut for Clearing the Cache in Chrome:
+
+"Ctrl-Shift-Delete"
